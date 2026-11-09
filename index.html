@@ -2,637 +2,297 @@
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Cauce Inteligencia Tributaria</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Cauce Inteligencia Tributaria desarrolla TRAZA CO₂, la plataforma que concilia el combustible fósil importado, vendido, facturado y quemado contra el IEPS al carbono declarado.">
+<meta name="description" content="Cauce ayuda a que el impuesto al carbono se cobre completo, con datos que ya existen y sin cambiar la ley.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600&family=Fira+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap">
 <style>
-/* Layout: banda marina de marca arriba, secciones claras en columna de 1120px, el flujo de tres fuentes que convergen como hilo conductor */
+/* Layout: una sola historia en cinco pantallas. Portada marina con las tres corrientes de la marca, luego bandas claras y amplias, una idea por banda */
 :root{
-  --bg:#f4f6f8; --surface:#ffffff; --ink:#0b1f33; --muted:#4a5f73; --line:#d6dee6;
-  --steel:#2d5b85; --mist:#6a8fb4; --green:#1f9e7a; --green-ink:#157a5e; --warn:#8f5a0a;
-  --band:#0b1f33; --band-2:#13304d; --band-ink:#f4f6f8; --band-muted:#a9bccd; --band-line:#244566; --band-green:#3fbf9a;
+  --bg:#f4f6f8; --surface:#ffffff; --ink:#0b1f33; --muted:#4a5f73; --line:#d9e1e8;
+  --steel:#2d5b85; --mist:#6a8fb4; --green:#1f9e7a; --green-ink:#14775b; --tint:#e6f4ef;
+  --band:#0b1f33; --band-2:#13304d; --band-ink:#f4f6f8; --band-muted:#b4c4d3; --band-line:#244566; --band-green:#3fbf9a;
   --f-display:"Fira Sans","Helvetica Neue",Arial,sans-serif;
   --f-body:"Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif;
-  --f-mono:"Fira Mono",ui-monospace,Menlo,Consolas,monospace;
-  --wrap:1120px;
+  --wrap:1080px; --r:14px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#071425; --surface:#0d2139; --ink:#eaf0f5; --muted:#a3b6c8; --line:#1d3a59;
-  --steel:#8fb1cf; --mist:#6f97bd; --green:#3fbf9a; --green-ink:#4fd0aa; --warn:#e2a54a;
+  --bg:#071425; --surface:#0d2139; --ink:#eaf0f5; --muted:#a8bacb; --line:#1d3a59;
+  --steel:#8fb1cf; --mist:#6f97bd; --green:#3fbf9a; --green-ink:#4fd0aa; --tint:#0f2d33;
   --band:#040d19; --band-2:#0b1f33; --band-line:#1d3a59; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#071425; --surface:#0d2139; --ink:#eaf0f5; --muted:#a3b6c8; --line:#1d3a59;
-  --steel:#8fb1cf; --mist:#6f97bd; --green:#3fbf9a; --green-ink:#4fd0aa; --warn:#e2a54a;
+  --bg:#071425; --surface:#0d2139; --ink:#eaf0f5; --muted:#a8bacb; --line:#1d3a59;
+  --steel:#8fb1cf; --mist:#6f97bd; --green:#3fbf9a; --green-ink:#4fd0aa; --tint:#0f2d33;
   --band:#040d19; --band-2:#0b1f33; --band-line:#1d3a59; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--band)}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:3px}
-.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.022em}
-h3{letter-spacing:-.01em}
-h2{font-size:clamp(1.8rem,1.2rem + 2.3vw,2.75rem);line-height:1.08;font-weight:700}
-h3{font-size:1.1rem;font-weight:700;line-height:1.3}
+:focus-visible{outline:3px solid var(--band-green);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.025em}
+h2{font-size:clamp(2rem,1.3rem + 2.6vw,3rem);line-height:1.05;font-weight:800}
+h3{font-size:1.25rem;line-height:1.25;font-weight:700;letter-spacing:-.01em}
 p{margin:0}
-.eyebrow::before{content:"§ ";opacity:.7}
-.eyebrow{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green-ink);font-weight:500}
-.lede{color:var(--muted);font-size:1.075rem;max-width:62ch}
-.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.src{font-size:.82rem;line-height:1.5;color:var(--muted);font-family:var(--f-mono)}
-.tag{display:inline-block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;border:1px solid currentColor}
-.tag.of{color:var(--green-ink)} .tag.pr{color:var(--warn)}
-section{padding-block:clamp(56px,8vw,96px)}
-.sec-head{display:grid;gap:14px;margin-bottom:40px}
+.kicker{font-family:var(--f-display);font-weight:600;font-size:.95rem;color:var(--green-ink)}
+.lede{font-size:1.2rem;color:var(--muted);max-width:56ch}
+section{padding-block:clamp(72px,10vw,128px)}
+.head{display:grid;gap:16px;margin-bottom:clamp(36px,5vw,56px);max-width:720px}
+.skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--band-green);color:#062018;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + 10px)}
 
-/* ---------- barra superior ---------- */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--band);border-bottom:1px solid var(--band-line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px}
-.brand{display:flex;align-items:center;text-decoration:none}
-.brand svg{height:34px;width:auto;display:block}
-.nav{display:flex;gap:26px;align-items:center}
-.nav a{color:var(--band-muted);text-decoration:none;font-size:.9rem;font-weight:500}
-.nav a:hover{color:var(--band-ink)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;gap:8px;font-family:var(--f-display);font-weight:700;font-size:.92rem;text-decoration:none;padding:11px 20px;border-radius:6px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-family:var(--f-display);font-weight:700;font-size:1.02rem;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
 .btn.pri{background:var(--band-green);color:#062018}
 .btn.pri:hover{background:#5ad2ae}
 .btn.ghost{border-color:var(--band-line);color:var(--band-ink)}
-.btn.ghost:hover{border-color:var(--band-muted)}
-.nav .btn{padding:8px 18px;color:#062018}
+.btn svg{width:18px;height:18px}
 
+/* barra */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(11,31,51,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--band-line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.brand svg{height:36px;width:auto;display:block}
+.nav{display:flex;gap:30px;align-items:center}
+.nav a{color:var(--band-muted);text-decoration:none;font-weight:600;font-size:1rem}
+.nav a:hover{color:var(--band-ink)}
+.nav .btn{min-height:44px;padding:0 20px;font-size:.95rem;color:#062018}
+@media (max-width:760px){.nav a:not(.btn){display:none}}
 
-/* ---------- hero ---------- */
-.hero{background:radial-gradient(1200px 520px at 78% 38%,rgba(63,191,154,.10),transparent 60%),linear-gradient(var(--band-line) 1px,transparent 1px) 0 0/100% 48px,linear-gradient(90deg,var(--band-line) 1px,transparent 1px) 0 0/48px 100%,var(--band);background-blend-mode:normal;color:var(--band-ink);padding-block:clamp(48px,7vw,96px) 0;overflow:hidden;position:relative}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--band) 100%),linear-gradient(90deg,var(--band) 0%,rgba(11,31,51,.86) 40%,rgba(11,31,51,.55) 100%);pointer-events:none}
-.hero>.wrap{position:relative;z-index:1}
-.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
-.hero h1{font-size:clamp(2.3rem,1.2rem + 4vw,4.1rem);line-height:1.02;font-weight:800;letter-spacing:-.03em}
+/* portada */
+.hero{background:radial-gradient(900px 480px at 80% 45%,rgba(63,191,154,.13),transparent 65%),var(--band);color:var(--band-ink);padding-block:clamp(56px,8vw,104px);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.hero-grid>*{min-width:0}
+.hero h1{font-size:clamp(2.8rem,1.4rem + 5.6vw,5.4rem);line-height:.98;font-weight:800;letter-spacing:-.04em}
 .hero h1 em{font-style:normal;color:var(--band-green)}
-.hero .lede{color:var(--band-muted);margin-top:22px}
-.hero .eyebrow{color:var(--band-green)}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
-.hero-txt{min-width:0;display:grid;gap:0}
-.flow{width:100%;height:auto;display:block}
-.stage{position:relative;aspect-ratio:620/380;max-width:100%;min-width:0}
-.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.stage .lbl{position:absolute;font-family:var(--f-mono);font-size:.78rem;line-height:1.35;color:var(--band-muted);letter-spacing:.04em}
-.stage .lbl b{display:block;color:var(--band-ink);font-weight:500;letter-spacing:.12em;font-size:.74rem}
-.stage .lbl.out b{color:var(--band-green)}
-.stage .readout{position:absolute;right:0;bottom:2%;font-family:var(--f-mono);font-size:.74rem;color:var(--band-muted);border:1px solid var(--band-line);background:rgba(4,13,25,.6);padding:8px 10px;border-radius:6px;font-variant-numeric:tabular-nums}
-.stage .readout span{color:var(--band-green)}
-@media (max-width:620px){.stage{aspect-ratio:620/440}.stage .lbl{font-size:.7rem}.stage .lbl b{font-size:.68rem}.stage .readout{display:none}.stage .lbl.mid{top:31%!important}.stage .lbl.out{left:auto!important;right:0;top:24%!important;text-align:right}.stage .lbl.out .x{display:none}}
-.flow text{font-family:var(--f-mono)}
-.flow .stream{stroke-dasharray:6 10;animation:run 1.6s linear infinite}
-@keyframes run{to{stroke-dashoffset:-32}}
-.hero-strip{margin-top:clamp(48px,6vw,72px);border-top:1px solid var(--band-line);display:grid;grid-template-columns:repeat(4,1fr)}
-.hero-strip div{padding:24px 20px 28px;border-left:1px solid var(--band-line);display:grid;gap:6px;align-content:start}
-.hero-strip div:first-child{border-left:0;padding-left:0}
-.hero-strip b{font-family:var(--f-display);font-size:clamp(1.6rem,1rem + 1.6vw,2.3rem);font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--band-ink)}
-.hero-strip span{color:var(--band-muted);font-size:.86rem;line-height:1.45}
-.hero-strip small{font-family:var(--f-mono);font-size:.76rem;color:var(--band-muted)}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-strip{grid-template-columns:1fr 1fr}.hero-strip div:nth-child(3){border-left:0;padding-left:0}.hero-strip div:nth-child(n+3){border-top:1px solid var(--band-line)}}
-@media (max-width:460px){.hero-strip{grid-template-columns:1fr}.hero-strip div{border-left:0;padding-left:0;border-top:1px solid var(--band-line)}.hero-strip div:first-child{border-top:0}}
+.hero p{font-size:clamp(1.15rem,1rem + .5vw,1.35rem);color:var(--band-muted);max-width:34ch;margin-top:26px}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.stage{position:relative;aspect-ratio:620/400;max-width:100%}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage .lbl{position:absolute;font-family:var(--f-display);font-weight:600;font-size:.95rem;color:var(--band-ink)}
+.stage .lbl.out{color:var(--band-green)}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.stage{max-width:520px}}
+@media (max-width:620px){.stage .lbl{font-size:.82rem}.stage .lbl.out{left:auto!important;right:0;top:22%!important;text-align:right}}
 
-/* ---------- problema: precio por tonelada ---------- */
-.two{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
-.two>*{min-width:0}
-@media (max-width:900px){.two{grid-template-columns:1fr;gap:36px}}
-.points{display:grid;gap:22px;margin-top:28px}
-.points div{display:grid;gap:4px;padding-left:16px;border-left:2px solid var(--line)}
-.points div:first-child{border-left-color:var(--green)}
-.points p{color:var(--muted)}
-.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px 24px 18px;box-shadow:0 1px 0 var(--line),0 18px 40px -28px rgba(11,31,51,.35)}
-.chart h3{margin-bottom:4px}
-.chart .sub{color:var(--muted);font-size:.88rem;margin-bottom:20px}
-.bars{display:grid;gap:9px}
-.bar{display:grid;grid-template-columns:128px 1fr 52px;align-items:center;gap:12px;font-size:.88rem}
-.bar .lab{color:var(--ink)}
-.bar .trk{height:16px;position:relative;background:linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/25% 100%}
-.bar .fill{position:absolute;inset:0 auto 0 0;background:var(--steel);border-radius:0 3px 3px 0}
-.bar.low .fill{background:var(--warn)}
-.bar.zero .fill{width:3px!important;background:var(--warn)}
-.bar .val{font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
-.axis{display:grid;grid-template-columns:128px 1fr 52px;gap:12px;margin-top:6px}
-.axis div{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.76rem;color:var(--muted)}
-.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:.8rem;color:var(--muted)}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
-@media (max-width:480px){.bar,.axis{grid-template-columns:96px 1fr 44px;gap:8px}.bar{font-size:.8rem}}
+/* cifra */
+.big{background:var(--surface);border-bottom:1px solid var(--line)}
+.big .wrap{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+.big .num{font-family:var(--f-display);font-weight:800;font-size:clamp(3.4rem,1.6rem + 7vw,7rem);line-height:.9;letter-spacing:-.045em;color:var(--green-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.big .num .upto{display:block;font-size:.22em;letter-spacing:0;font-weight:700;color:var(--muted);margin-bottom:6px}
+.big .num small{display:block;font-size:.26em;letter-spacing:0;font-weight:700;color:var(--ink);margin-top:10px}
+.big h2{font-size:clamp(1.6rem,1.1rem + 1.8vw,2.3rem)}
+.big p{color:var(--muted);margin-top:14px;max-width:48ch}
+.note{font-size:.88rem;color:var(--muted);margin-top:18px}
+@media (max-width:760px){.big .wrap{grid-template-columns:1fr}}
 
-/* ---------- solución ---------- */
-.alt{background:var(--surface);border-block:1px solid var(--line)}
-.evid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg)}
-.evid>div{padding:28px 26px;display:grid;gap:10px;align-content:start;border-left:1px solid var(--line)}
-.evid>div:first-child{border-left:0}
-.evid .k{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
-.evid .k i{width:22px;height:4px;border-radius:2px;display:inline-block}
-.evid p{color:var(--muted);font-size:.95rem}
-.evid ul{margin:0;padding-left:18px;color:var(--ink);font-size:.92rem;display:grid;gap:4px}
-@media (max-width:820px){.evid{grid-template-columns:1fr}.evid>div{border-left:0;border-top:1px solid var(--line)}.evid>div:first-child{border-top:0}}
-.verdict{margin-top:28px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;padding:20px 24px;border-radius:10px;background:var(--band);color:var(--band-ink)}
-.verdict b{font-family:var(--f-display);font-size:1.05rem}
-.verdict p{color:var(--band-muted);font-size:.95rem}
-.verdict .dot{width:14px;height:14px;border-radius:50%;background:var(--band-green);box-shadow:0 0 0 6px rgba(63,191,154,.18)}
-.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
-.cases div{display:grid;gap:6px;align-content:start}
-.cases p{color:var(--muted);font-size:.93rem}
-@media (max-width:820px){.cases{grid-template-columns:1fr}}
+/* pasos */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+.steps li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px 32px;display:grid;gap:14px;align-content:start;counter-increment:s;position:relative}
+.steps .ic{width:56px;height:56px;border-radius:14px;background:var(--tint);color:var(--green-ink);display:grid;place-items:center}
+.steps .ic svg{width:28px;height:28px}
+.steps li::after{content:"Paso " counter(s);position:absolute;top:30px;right:28px;font-family:var(--f-display);font-weight:600;font-size:.85rem;color:var(--muted)}
+.steps p{color:var(--muted)}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+.product{margin-top:28px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:1rem}
+.product b{font-family:var(--f-display);color:var(--ink)}
+.product b span{color:var(--green-ink)}
 
-/* ---------- proceso ---------- */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:s}
-.steps li{counter-increment:s;padding:26px 24px 28px 0;border-top:2px solid var(--line);display:grid;gap:8px;align-content:start;position:relative}
-.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--f-mono);font-size:.78rem;color:var(--green-ink);font-weight:500}
-.steps li::after{content:"";position:absolute;top:-2px;left:0;width:40px;height:2px;background:var(--green)}
-.steps p{color:var(--muted);font-size:.93rem}
-.steps .who{font-family:var(--f-mono);font-size:.72rem;color:var(--steel)}
-@media (max-width:820px){.steps{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.steps{grid-template-columns:1fr}}
-.cycle{margin-top:48px;overflow-x:auto}
-.cycle-inner{min-width:640px}
-.cycle-row{display:grid;grid-template-columns:repeat(8,1fr);gap:4px}
-.cycle-row div{background:var(--bg);border:1px solid var(--line);padding:10px 10px 12px;font-size:.8rem;display:grid;gap:2px;border-radius:4px}
-.cycle-row b{font-family:var(--f-mono);font-size:.7rem;color:var(--green-ink);font-weight:500}
-.cycle-cap{display:flex;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+/* por qué importa */
+.why{background:var(--band);color:var(--band-ink)}
+.why .kicker{color:var(--band-green)}
+.why .lede{color:var(--band-muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--band-line)}
+.cards div{padding:30px 28px 8px 0;display:grid;gap:12px;align-content:start}
+.cards div+div{padding-left:28px;border-left:1px solid var(--band-line)}
+.cards .n{font-family:var(--f-display);font-weight:800;font-size:2.6rem;letter-spacing:-.03em;color:var(--band-green);line-height:1}
+.cards p{color:var(--band-muted)}
+@media (max-width:860px){.cards{grid-template-columns:1fr}.cards div+div{padding-left:0;border-left:0;border-top:1px solid var(--band-line)}}
 
-/* ---------- fuentes ---------- */
-.sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;border-top:1px solid var(--line)}
-.sources div{padding:18px 18px 18px 0;border-bottom:1px solid var(--line);display:grid;gap:2px}
-.sources b{font-family:var(--f-display);font-size:.98rem}
-.sources span{color:var(--muted);font-size:.88rem}
-.sources em{font-style:normal;font-family:var(--f-mono);font-size:.72rem;color:var(--steel)}
-
-/* ---------- video ---------- */
-.video-band{background:var(--band);color:var(--band-ink)}
-.video-band .lede{color:var(--band-muted)}
-.video-band .eyebrow{color:var(--band-green)}
-.vid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+/* video */
+.vid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
 .vid>*{min-width:0}
-.vid video{width:100%;max-width:100%;aspect-ratio:16/9;border-radius:10px;border:1px solid var(--band-line);background:#000;display:block}
-@media (max-width:900px){.vid{grid-template-columns:1fr;gap:28px}}
+.vid video{width:100%;max-width:100%;aspect-ratio:16/9;border-radius:var(--r);background:#000;display:block;box-shadow:0 30px 60px -30px rgba(11,31,51,.5)}
+@media (max-width:860px){.vid{grid-template-columns:1fr;gap:28px}}
 
-/* ---------- recaudación ---------- */
-.rev{display:grid;grid-template-columns:1.3fr 1fr;gap:28px}
-.rev>*{min-width:0}
-@media (max-width:900px){.rev{grid-template-columns:1fr}}
-.col-chart{display:grid;grid-template-columns:44px 1fr;gap:10px;height:280px;margin-top:8px}
-.col-y{display:flex;flex-direction:column-reverse;justify-content:space-between;font-family:var(--f-mono);font-size:.76rem;color:var(--muted);text-align:right;padding-bottom:28px}
-.col-plot{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:end;padding-bottom:28px;background:linear-gradient(0deg,var(--line) 1px,transparent 1px) 0 calc(100% - 28px)/100% 25%}
-.col{position:relative;height:100%;display:flex;align-items:flex-end;justify-content:center}
-.col .c{width:min(64px,80%);background:var(--steel);border-radius:3px 3px 0 0;position:relative}
-.col .c.rng{background:linear-gradient(180deg,transparent 0 0);border:2px dashed var(--green);border-bottom:0;background-color:transparent}
-.col .c.base{background:var(--green)}
-.col .v{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:.78rem;white-space:nowrap;font-weight:500}
-.col .x{position:absolute;bottom:-26px;left:0;right:0;text-align:center;font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
-.pie-wrap{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;margin-top:12px}
-.pie{width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--steel) 0 69%,var(--green) 69% 89%,var(--mist) 89% 100%);position:relative}
-.pie::after{content:"";position:absolute;inset:34px;border-radius:50%;background:var(--surface)}
-.pie-leg{display:grid;gap:12px;font-size:.88rem}
-.pie-leg div{display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:baseline}
-.pie-leg i{width:12px;height:12px;border-radius:2px;align-self:center}
-.pie-leg b{font-family:var(--f-mono);font-weight:500}
-@media (max-width:420px){.pie-wrap{grid-template-columns:1fr;justify-items:start}}
-.note{margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}
+/* confianza */
+.trust{background:var(--surface);border-block:1px solid var(--line)}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.trust-grid>*{min-width:0}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start}
+.checks svg{width:28px;height:28px;color:var(--green-ink)}
+.checks b{font-family:var(--f-display);display:block;font-size:1.08rem}
+.checks span{color:var(--muted)}
+.sources{margin-top:8px;display:flex;flex-wrap:wrap;gap:10px}
+.sources span{font-family:var(--f-display);font-weight:600;font-size:.95rem;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg)}
+@media (max-width:860px){.trust-grid{grid-template-columns:1fr}}
 
-/* ---------- implementación ---------- */
-.road{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
-.road>div{padding:0 18px 0 0;display:grid;gap:8px;align-content:start;position:relative}
-.road .rail{height:2px;background:var(--line);position:relative;margin-bottom:16px}
-.road .rail::before{content:"";position:absolute;left:0;top:-5px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--green)}
-.road .gate .rail::before{border-radius:2px;transform:rotate(45deg);border-color:var(--warn)}
-.road .when{font-family:var(--f-mono);font-size:.74rem;color:var(--steel)}
-.road .n{font-family:var(--f-display);font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
-.road .n small{font-size:.8rem;font-weight:600;color:var(--muted);font-family:var(--f-body)}
-.road p{color:var(--muted);font-size:.9rem}
-@media (max-width:900px){.road{grid-template-columns:1fr 1fr;row-gap:32px}}
-@media (max-width:520px){.road{grid-template-columns:1fr}}
-
-/* ---------- seguridad ---------- */
-.sec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.sec-grid div{background:var(--surface);padding:24px;display:grid;gap:8px;align-content:start}
-.sec-grid p{color:var(--muted);font-size:.92rem}
-@media (max-width:820px){.sec-grid{grid-template-columns:1fr}}
-.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.badges span{font-family:var(--f-mono);font-size:.76rem;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
-.badges b{font-weight:500;color:var(--green-ink)}
-.badges .p b{color:var(--warn)}
-
-/* ---------- empresa ---------- */
-.why{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
-.why div{display:grid;gap:8px;align-content:start}
-.why h3{display:flex;align-items:center;gap:10px}
-.why h3 i{width:8px;height:8px;border-radius:50%;background:var(--green)}
-.why p{color:var(--muted);font-size:.93rem}
-@media (max-width:820px){.why{grid-template-columns:1fr}}
-.partners{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
-.partners>div{border:1px solid var(--line);border-radius:10px;padding:24px;display:grid;gap:8px;background:var(--surface);align-content:start}
-.partners p{color:var(--muted);font-size:.93rem}
-@media (max-width:720px){.partners{grid-template-columns:1fr}}
-.refs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:44px;border-top:1px solid var(--line)}
-.refs div{padding:18px 20px 18px 0;display:grid;gap:4px;align-content:start}
-.refs b{font-family:var(--f-display);font-size:1.25rem;font-variant-numeric:tabular-nums}
-.refs span{color:var(--muted);font-size:.88rem}
-.refs a{font-family:var(--f-mono);font-size:.72rem;color:var(--steel)}
-@media (max-width:820px){.refs{grid-template-columns:1fr}}
-
-/* ---------- contacto ---------- */
-.contact{background:var(--band);color:var(--band-ink)}
+/* contacto */
+.contact{background:var(--band);color:var(--band-ink);text-align:left}
+.contact .kicker{color:var(--band-green)}
 .contact .lede{color:var(--band-muted)}
-.contact .eyebrow{color:var(--band-green)}
 .c-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .c-grid>*{min-width:0}
 @media (max-width:860px){.c-grid{grid-template-columns:1fr;gap:36px}}
-form{display:grid;gap:14px}
-.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media (max-width:520px){.f2{grid-template-columns:1fr}}
-label{display:grid;gap:6px;font-size:.82rem;color:var(--band-muted);font-weight:500}
-input,select,textarea{font:inherit;font-size:1rem;min-height:46px;color:var(--band-ink);background:var(--band-2);border:1px solid #4d6f92;border-radius:6px;padding:11px 12px;width:100%}
-input:focus,select:focus,textarea:focus{outline:2px solid var(--band-green);outline-offset:0;border-color:transparent}
-textarea{min-height:110px;resize:vertical}
-.form-msg{font-size:.88rem;color:var(--band-green);min-height:1.4em}
-.c-info{display:grid;gap:18px;margin-top:28px}
-.c-info div{display:grid;gap:2px}
-.c-info span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--band-muted)}
-.c-info b{font-weight:500;user-select:all}
-
-footer{background:var(--band);color:var(--band-muted);border-top:1px solid var(--band-line);font-size:.82rem}
-footer .wrap{padding-block:32px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start}
-footer svg{height:28px;width:auto}
-footer p{max-width:80ch}
-@media (max-width:720px){footer .wrap{grid-template-columns:1fr}}
-
-.skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--band-green);color:#062018;font-weight:700;padding:10px 16px;border-radius:6px;text-decoration:none}
-.skip:focus{top:calc(env(safe-area-inset-top,0px) + 10px)}
-.menu{display:none;position:relative}
-.menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid var(--band-line);border-radius:6px;color:var(--band-ink);font-family:var(--f-display);font-weight:700;font-size:.92rem}
-.menu summary::-webkit-details-marker{display:none}
-.menu summary i{display:block;width:16px;height:2px;background:currentColor;box-shadow:0 5px 0 currentColor,0 -5px 0 currentColor}
-.menu nav{position:absolute;right:0;top:calc(100% + 8px);background:var(--band-2);border:1px solid var(--band-line);border-radius:10px;padding:8px;display:grid;min-width:230px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
-.menu nav a{color:var(--band-ink);text-decoration:none;padding:12px 14px;border-radius:6px;font-weight:500}
-.menu nav a:hover,.menu nav a:focus-visible{background:var(--band)}
-@media (max-width:880px){.menu{display:block}.nav{display:none}}
-.proof{margin-top:28px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:14px 18px;border:1px solid var(--band-line);border-radius:10px;background:var(--band-2);max-width:560px}
-.proof b{font-family:var(--f-display);font-size:1.5rem;font-weight:800;color:var(--band-green);font-variant-numeric:tabular-nums;white-space:nowrap}
-.proof span{color:var(--band-ink);font-size:.95rem;line-height:1.4;flex:1;min-width:200px}
-.proof small{display:block;color:var(--band-muted);font-family:var(--f-mono);font-size:.76rem;margin-top:2px}
-.req{color:var(--band-green)}
-.err{color:#ffb4a8;font-size:.82rem;min-height:0}
-.err:empty{display:none}
+form{display:grid;gap:16px}
+label{display:grid;gap:6px;font-weight:600;font-size:.95rem;color:var(--band-muted)}
+input,textarea{font:inherit;font-size:1rem;min-height:52px;color:var(--band-ink);background:var(--band-2);border:1px solid #4d6f92;border-radius:10px;padding:12px 14px;width:100%}
+textarea{min-height:120px;resize:vertical}
+input:focus,textarea:focus{outline:3px solid var(--band-green);outline-offset:0;border-color:transparent}
 input[aria-invalid="true"]{border-color:#ff8f7f}
-.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.basis{border-bottom:1px solid var(--line);background:var(--surface)}
-.basis .wrap{padding-block:28px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
-.basis .cap{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);max-width:22ch;line-height:1.5}
-.marks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-left:1px solid var(--line)}
-.marks li{padding:6px 18px;border-right:1px solid var(--line);display:grid;gap:2px;align-content:center;min-height:56px}
-.marks b{font-family:var(--f-display);font-weight:700;font-size:1.15rem;letter-spacing:.02em;color:var(--ink)}
-.marks span{font-size:.8rem;color:var(--muted);line-height:1.3}
-.basis .disc{grid-column:1/-1;font-size:.8rem;color:var(--muted);margin-top:-6px}
-@media (max-width:820px){.basis .wrap{grid-template-columns:1fr}.basis .cap{max-width:none}.marks{grid-template-columns:repeat(2,1fr);border-left:0}.marks li{border-right:0;border-top:1px solid var(--line);padding:10px 0}}
+.err{color:#ffb4a8;font-size:.88rem;font-weight:500}
+.err:empty{display:none}
+.form-msg{color:var(--band-green);min-height:1.5em}
+.mail{margin-top:28px;font-family:var(--f-display);font-weight:600;font-size:1.15rem;user-select:all}
+
+footer{background:var(--band);color:var(--band-muted);border-top:1px solid var(--band-line);font-size:.9rem}
+footer .wrap{padding-block:32px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer svg{height:30px;width:auto}
+footer p{max-width:70ch}
 </style>
 </head><body>
 
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="Cauce Inteligencia Tributaria, inicio">
-      <svg viewBox="0 0 1320 340" role="img" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M30 70 C130 70 150 170 250 170" stroke="#8fb1cf" stroke-width="22"/><path d="M30 270 C130 270 150 170 250 170" stroke="#5f86ab" stroke-width="22"/><path d="M30 170 L250 170" stroke="#f4f6f8" stroke-width="22"/><path d="M250 170 L320 170" stroke="#3fbf9a" stroke-width="34"/></g><circle cx="320" cy="170" r="30" fill="#3fbf9a"/><text x="390" y="200" font-family="Fira Sans,Helvetica,Arial,sans-serif" font-size="128" font-weight="800" letter-spacing="10" fill="#f4f6f8">CAUCE</text><text x="394" y="262" font-family="Helvetica,Arial,sans-serif" font-size="38" letter-spacing="6" fill="#a9bccd">INTELIGENCIA TRIBUTARIA</text></svg>
-    </a>
+    <a class="brand" href="#inicio" aria-label="Cauce Inteligencia Tributaria, inicio"><svg viewBox="0 0 1320 340" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M30 70 C130 70 150 170 250 170" stroke="#8fb1cf" stroke-width="22"/><path d="M30 270 C130 270 150 170 250 170" stroke="#5f86ab" stroke-width="22"/><path d="M30 170 L250 170" stroke="#f4f6f8" stroke-width="22"/><path d="M250 170 L320 170" stroke="#3fbf9a" stroke-width="34"/></g><circle cx="320" cy="170" r="30" fill="#3fbf9a"/><text x="390" y="200" font-family="Fira Sans,Helvetica,Arial,sans-serif" font-size="128" font-weight="800" letter-spacing="10" fill="#f4f6f8">CAUCE</text><text x="394" y="262" font-family="Helvetica,Arial,sans-serif" font-size="38" letter-spacing="6" fill="#a9bccd">INTELIGENCIA TRIBUTARIA</text></svg></a>
     <nav class="nav" aria-label="Principal">
-      <a href="#problema">El problema</a>
-      <a href="#solucion">TRAZA CO₂</a>
-      <a href="#recaudacion">Beneficio</a>
-      <a href="#funcionamiento">Cómo funciona</a>
-      <a href="#implementacion">Implementación</a>
-      <a href="#seguridad">Seguridad</a>
-      <a href="#empresa">Empresa</a>
-      <a class="btn pri" href="#contacto">Solicitar demostración</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#importa">Por qué importa</a>
+      <a href="#confianza">Confianza</a>
+      <a class="btn pri" href="#contacto">Contáctanos</a>
     </nav>
-    <details class="menu" id="menu"><summary aria-label="Abrir menú"><i aria-hidden="true"></i>Menú</summary><nav aria-label="Principal (móvil)"><a href="#problema">El problema</a>
-      <a href="#solucion">TRAZA CO₂</a>
-      <a href="#recaudacion">Beneficio</a>
-      <a href="#funcionamiento">Cómo funciona</a>
-      <a href="#implementacion">Implementación</a>
-      <a href="#seguridad">Seguridad</a>
-      <a href="#empresa">Empresa</a>
-      <a href="#contacto">Solicitar demostración</a></nav></details>
   </div>
 </header>
 
 <main id="contenido" tabindex="-1">
-<!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-txt">
-        <p class="eyebrow">TRAZA CO₂ · Trazabilidad fiscal del carbono</p>
-        <h1 style="margin-top:16px">Recuperar el IEPS al carbono que hoy no se paga, <em>con la ley vigente.</em></h1>
-        <p class="lede">TRAZA CO₂ concilia el combustible fósil importado, vendido, facturado y quemado contra el impuesto declarado, por contribuyente, planta y mes. El auditor recibe cada mes los casos que más recaudan, con la evidencia lista.</p>
-        <div class="hero-cta">
-          <a class="btn pri" href="#contacto">Solicitar una demostración</a>
-          <a class="btn ghost" href="#funcionamiento">Ver cómo funciona</a>
-        </div>
-        <div class="proof"><b>+457–810 mdp</b><span>adicionales al año de IEPS al carbono, sin cambiar la ley<small>Proyección del modelo de Cauce · cuotas 2026</small></span></div>
-      </div>
-      <div class="stage" role="img" aria-label="Tres fuentes de evidencia, lo que entró, lo que salió y lo que se quemó, convergen en un indicio con evidencia en toneladas de CO₂ y pesos de IEPS">
-        <canvas id="flowcv" aria-hidden="true"></canvas>
-        <div class="lbl" style="left:0;top:4%"><b>LO QUE ENTRÓ</b>pedimentos · CFDI de compra</div>
-        <div class="lbl mid" style="left:0;top:38%"><b>LO QUE SALIÓ</b>CFDI de venta · volumétricos</div>
-        <div class="lbl" style="left:0;bottom:4%"><b>LO QUE SE QUEMÓ</b>RENE · COA · INEM</div>
-        <div class="lbl out" style="left:76%;top:34%"><b>INDICIO</b>con evidencia<span class="x"><br>t CO₂ · $ IEPS</span></div>
-        <div class="readout" aria-hidden="true">Caso ilustrativo · Δ <span>27 M litros</span> · <span>$6.2 mdp</span></div>
-      </div>
-    </div>
-    <div class="hero-strip" aria-label="Cifras oficiales">
-      <div><b class="mono">10,517.7 mdp</b><span>IEPS al carbono estimado para 2026</span><small>Ley de Ingresos de la Federación 2026</small></div>
-      <div><b class="mono">973</b><span>establecimientos reportan emisiones al RENE, con 637 Mt CO₂e</span><small>SEMARNAT, informe RENE 2018</small></div>
-      <div><b class="mono">6,212 mdp</b><span>restaron los estímulos mal aplicados en 2016</span><small>SHCP, serie de recaudación</small></div>
-      <div><b class="mono">$0 / t</b><span>paga el gas natural por tonelada de CO₂: no tiene cuota</span><small>LIEPS art. 2, fr. I, inciso H</small></div>
-    </div>
-  </div>
-</section>
-
-<!-- BASE OFICIAL -->
-<section class="basis" aria-labelledby="basisT" style="padding-block:0">
-  <div class="wrap">
-    <p class="cap" id="basisT">Construido sobre fuentes y normas oficiales</p>
-    <ul class="marks">
-      <li><b>SAT</b><span>CFDI, declaraciones y controles volumétricos</span></li>
-      <li><b>ANAM</b><span>Pedimentos de importación</span></li>
-      <li><b>SEMARNAT</b><span>RENE, COA e INEM</span></li>
-      <li><b>CONUEE</b><span>Poderes caloríficos 2026</span></li>
-      <li><b>IPCC 2006</b><span>Factores de emisión</span></li>
-      <li><b>DOF</b><span>Acuerdo 179/2025, cuotas 2026</span></li>
-    </ul>
-    <p class="disc">Las instituciones se mencionan como fuente de datos o de normativa. Su mención no implica convenio, respaldo ni relación comercial con Cauce.</p>
-  </div>
-</section>
-
-<!-- PROBLEMA -->
-<section id="problema">
-  <div class="wrap two">
+  <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">El problema</p>
-      <h2 style="margin-top:14px">Un impuesto que se paga sobre lo que cada quien declara.</h2>
-      <p class="lede" style="margin-top:18px">El IEPS al carbono se cobra por litro o tonelada de combustible. Hoy nadie cruza, tonelada por tonelada, lo que se importa, se factura, se quema y se emite. Esa brecha de medición es la brecha de recaudación.</p>
-      <div class="points">
-        <div><h3>Uso no combustivo y autoconsumo</h3><p>Combustible declarado como materia prima que en realidad se quema, y autoconsumo que no causa el impuesto (LIEPS arts. 2-E y 7).</p></div>
-        <div><h3>Combustible sin documentación legal</h3><p>Volúmenes que entran a la cadena sin pedimento ni factura y nunca pagan la cuota.</p></div>
-        <div><h3>Carbón y coque no declarados</h3><p>Los combustibles que más emiten son los que menos pagan y los que menos se verifican.</p></div>
+      <h1>Que pague <em>quien contamina.</em></h1>
+      <p>Ayudamos a que el impuesto al carbono se cobre completo, con datos que ya existen y sin cambiar la ley.</p>
+      <div class="cta">
+        <a class="btn pri" href="#como">Conoce cómo funciona
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+        <a class="btn ghost" href="#video">Ver el video</a>
       </div>
     </div>
-    <figure class="chart" style="margin:0">
-      <h3>Cuánto paga cada combustible por tonelada de CO₂</h3>
-      <p class="sub">Pesos por tonelada de CO₂, con las cuotas vigentes en 2026</p>
-      <div class="bars" role="list">
-        <div class="bar" role="listitem"><span class="lab">Turbosina</span><span class="trk"><span class="fill" style="width:89%"></span></span><span class="val">80.1</span></div>
-        <div class="bar" role="listitem"><span class="lab">Diésel</span><span class="trk"><span class="fill" style="width:84.7%"></span></span><span class="val">76.2</span></div>
-        <div class="bar" role="listitem"><span class="lab">Gasolinas</span><span class="trk"><span class="fill" style="width:80.7%"></span></span><span class="val">72.6</span></div>
-        <div class="bar" role="listitem"><span class="lab">Combustóleo</span><span class="trk"><span class="fill" style="width:78.9%"></span></span><span class="val">71.0</span></div>
-        <div class="bar" role="listitem"><span class="lab">Gas LP (propano)</span><span class="trk"><span class="fill" style="width:68.2%"></span></span><span class="val">61.4</span></div>
-        <div class="bar low" role="listitem"><span class="lab">Carbón térmico</span><span class="trk"><span class="fill" style="width:28%"></span></span><span class="val">25.2</span></div>
-        <div class="bar low" role="listitem"><span class="lab">Coque de carbón</span><span class="trk"><span class="fill" style="width:24.6%"></span></span><span class="val">22.1</span></div>
-        <div class="bar low" role="listitem"><span class="lab">Coque de petróleo</span><span class="trk"><span class="fill" style="width:8.8%"></span></span><span class="val">7.9</span></div>
-        <div class="bar zero" role="listitem"><span class="lab">Gas natural</span><span class="trk"><span class="fill"></span></span><span class="val">0</span></div>
-      </div>
-      <div class="axis" aria-hidden="true"><span></span><div><span>0</span><span>22.5</span><span>45</span><span>67.5</span><span>90</span></div><span></span></div>
-      <div class="legend"><span><i style="background:var(--steel)"></i>Combustibles líquidos</span><span><i style="background:var(--warn)"></i>Sólidos y gas: pagan menos</span></div>
-      <figcaption class="src" style="margin-top:14px">Fuente: cuotas del Acuerdo 179/2025 (DOF 22-12-2025), poderes caloríficos CONUEE 2026 y factores IPCC 2006, con el método del Reglamento del RENE.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- SOLUCIÓN -->
-<section class="alt" id="solucion">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">La solución</p>
-      <h2>TRAZA CO₂ compara lo declarado contra tres datos que el contribuyente no controla.</h2>
-      <p class="lede">La plataforma reconstruye el balance de cada contribuyente y de cada planta. Cuando las cifras no cuadran, genera un indicio con su evidencia y lo ordena por el monto que realmente se puede cobrar.</p>
-    </div>
-    <div class="evid">
-      <div><span class="k"><i style="background:var(--mist)"></i>Lo que entró</span><p>Cuánto combustible recibió el contribuyente.</p><ul><li>Pedimentos de importación</li><li>Facturas de compra (CFDI)</li><li>Controles volumétricos de recepción</li></ul></div>
-      <div><span class="k"><i style="background:var(--steel)"></i>Lo que salió</span><p>Cuánto vendió y cuánto quedó en inventario. La diferencia es lo que se consumió en la planta.</p><ul><li>Facturas de venta emitidas</li><li>Inventarios y volumétricos</li><li>Declaraciones de IEPS</li></ul></div>
-      <div><span class="k"><i style="background:var(--green)"></i>Lo que se quemó</span><p>Lo que la planta reporta físicamente a SEMARNAT, independiente de su declaración fiscal.</p><ul><li>RENE y Cédula de Operación Anual</li><li>Emisiones de azufre (INEM)</li><li>CO₂ calculado por poder calorífico</li></ul></div>
-    </div>
-    <div class="verdict">
-      <span class="dot" aria-hidden="true"></span>
-      <div><b>Un indicio, no una resolución.</b><p>El sistema selecciona casos con tolerancias por merma e inventario. El auditor decide si envía carta invitación o ejerce facultades de comprobación, y el contribuyente conserva su derecho a aclarar.</p></div>
-    </div>
-    <div class="cases">
-      <div><h3>Uso no combustivo</h3><p>Una planta declara combustóleo como materia prima y aplica el estímulo. Su reporte de emisiones dice que lo quemó. El sistema marca la diferencia en litros, toneladas de CO₂ y pesos.</p></div>
-      <div><h3>Autoconsumo</h3><p>Un importador consume parte de su propio combustible. Lo que entró menos lo que vendió debió causar el impuesto, y no aparece en su declaración.</p></div>
-      <div><h3>Cadena del litro</h3><p>Importado contra recibido, entregado contra facturado, facturado contra declarado. Cada salto que no cuadra queda documentado con su archivo de origen.</p></div>
+    <div class="stage" role="img" aria-label="Tres fuentes de información, facturas, aduanas y reportes ambientales, se unen en un solo resultado: lo que realmente se debe">
+      <canvas id="flowcv" aria-hidden="true"></canvas>
+      <div class="lbl" style="left:0;top:7%">Facturas</div>
+      <div class="lbl" style="left:0;top:41%">Aduanas</div>
+      <div class="lbl" style="left:0;bottom:6%">Reportes ambientales</div>
+      <div class="lbl out" style="left:76%;top:40%">Lo que<br>se debe</div>
     </div>
   </div>
 </section>
 
-<!-- RECAUDACIÓN -->
-<section id="recaudacion">
+<section class="big" aria-labelledby="bigT">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">El beneficio</p>
-      <h2>De 457 a 810 millones de pesos adicionales al año, sin cambiar la ley.</h2>
-      <p class="lede">Es entre 4% y 8% más de lo que hoy recauda el IEPS al carbono. Cada etapa se mide antes de pasar a la siguiente.</p>
+    <p class="num"><span class="upto">Hasta</span>$810<small>millones de pesos al año</small></p>
+    <div>
+      <h2 id="bigT">Dinero que hoy no llega a las arcas públicas.</h2>
+      <p>Es lo que se podría recuperar cada año del impuesto al carbono solo con cobrar bien lo que ya marca la ley. Recursos para escuelas, hospitales y transporte.</p>
+      <p class="note">Escenario alto de nuestra proyección; el escenario base es de 457 millones. Calculado con las cuotas oficiales de 2026.</p>
     </div>
-    <div class="rev">
-      <figure class="chart" style="margin:0">
-        <h3>Recaudación adicional por etapa <span class="tag pr" style="margin-left:6px">Proyección</span></h3>
-        <p class="sub">Millones de pesos al año</p>
-        <div class="col-chart" role="img" aria-label="Piloto 2027: 60 mdp. Ola 1 2028: 270 mdp. Escala nacional desde 2029: de 457 a 810 mdp al año. Operación 2030: de 457 a 810 mdp.">
-          <div class="col-y" aria-hidden="true"><span>0</span><span>225</span><span>450</span><span>675</span><span>900</span></div>
-          <div class="col-plot">
-            <div class="col"><div class="c" style="height:6.7%"><span class="v">60</span></div><span class="x">Piloto 2027</span></div>
-            <div class="col"><div class="c" style="height:30%"><span class="v">270</span></div><span class="x">Ola 1 · 2028</span></div>
-            <div class="col"><div class="c rng" style="height:90%"><span class="v">457–810</span><div class="c base" style="position:absolute;bottom:0;left:-2px;right:-2px;width:auto;height:56.4%;border-radius:0"></div></div><span class="x">Ola 2 · 2029</span></div>
-            <div class="col"><div class="c rng" style="height:90%"><span class="v">457–810</span><div class="c base" style="position:absolute;bottom:0;left:-2px;right:-2px;width:auto;height:56.4%;border-radius:0"></div></div><span class="x">2030+</span></div>
-          </div>
-        </div>
-        <div class="legend"><span><i style="background:var(--steel)"></i>Despliegue</span><span><i style="background:var(--green)"></i>Escenario base</span><span><i style="border:2px dashed var(--green);background:transparent"></i>Hasta el escenario alto</span></div>
-      </figure>
-      <figure class="chart" style="margin:0">
-        <h3>De dónde sale el dinero <span class="tag pr" style="margin-left:6px">Proyección</span></h3>
-        <p class="sub">Participación en la recuperación anual</p>
-        <div class="pie-wrap">
-          <div class="pie" role="img" aria-label="69% uso no combustivo y autoconsumo, 20% combustible sin documentación legal, 11% carbón y coque"></div>
-          <div class="pie-leg">
-            <div><i style="background:var(--steel)"></i><span>Uso no combustivo y autoconsumo</span><b>69%</b></div>
-            <div><i style="background:var(--green)"></i><span>Combustible sin documentación legal</span><b>20%</b></div>
-            <div><i style="background:var(--mist)"></i><span>Carbón y coque</span><b>11%</b></div>
-          </div>
-        </div>
-        <div class="note"><p style="font-size:.9rem;color:var(--muted)">Recuperación anual: <span class="mono" style="color:var(--ink)">316–526</span>, <span class="mono" style="color:var(--ink)">90–181</span> y <span class="mono" style="color:var(--ink)">51–103</span> mdp respectivamente.</p></div>
-      </figure>
-    </div>
-    <p class="src" style="margin-top:18px"><span class="tag of">Dato oficial</span> recaudación LIF 2026 y cuotas 2026. <span class="tag pr">Proyección</span> modelo de Cauce con la ley y las cuotas vigentes; se calibra con casos reales en la fase 0.</p>
   </div>
 </section>
 
-<!-- FUNCIONAMIENTO -->
-<section class="alt" id="funcionamiento">
+<section id="como">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Cómo funciona</p>
-      <h2>Seis pasos, de los datos que el SAT ya tiene al caso listo para el auditor.</h2>
+    <div class="head">
+      <p class="kicker">Cómo funciona</p>
+      <h2>Tres pasos para que los números cuadren.</h2>
+      <p class="lede">Las empresas declaran cuánto combustible usan. Nosotros lo comparamos con lo que en realidad compraron y quemaron.</p>
     </div>
     <ol class="steps">
-      <li><h3>Recibe</h3><p>Carga mensual de facturas, declaraciones, controles volumétricos, pedimentos y reportes ambientales, con validación de estructura y totales.</p><span class="who">Ingesta · día 1–2</span></li>
-      <li><h3>Une</h3><p>Concilia cada registro con su RFC, permiso e instalación para armar una sola vista por contribuyente y planta.</p><span class="who">Conciliación de entidades · día 2–3</span></li>
-      <li><h3>Convierte a CO₂</h3><p>Volumen por poder calorífico CONUEE por factor IPCC 2006, con el método oficial del Reglamento del RENE.</p><span class="who">Motor de carbono · día 3</span></li>
-      <li><h3>Calcula lo debido</h3><p>Aplica las cuotas vigentes del Acuerdo 179/2025 a cada combustible y lo compara con lo declarado.</p><span class="who">Motor fiscal · día 4</span></li>
-      <li><h3>Cruza y prioriza</h3><p>Corre las reglas de conciliación con sus tolerancias y ordena los casos por monto cobrable, con la explicación de cada puntaje.</p><span class="who">Motor de reglas y riesgo · día 5–6</span></li>
-      <li><h3>Actúa el auditor</h3><p>Revisa el expediente con la huella de cada archivo y decide la acción. El resultado recalibra el modelo del mes siguiente.</p><span class="who">Expediente y bitácora · día 7–8</span></li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+        <h3>Reunimos</h3>
+        <p>Juntamos facturas, registros de aduana y reportes ambientales que las autoridades ya tienen.</p>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 7h14M5 7l-3 7a4 4 0 0 0 6 0L5 7zM19 7l-3 7a4 4 0 0 0 6 0l-3-7z"/></svg></span>
+        <h3>Comparamos</h3>
+        <p>Medimos cuánto combustible se quemó de verdad y lo ponemos frente a lo que se declaró.</p>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span>
+        <h3>Señalamos</h3>
+        <p>Cuando algo no cuadra, la autoridad recibe el caso con su evidencia. Ella decide qué hacer.</p>
+      </li>
     </ol>
+    <p class="product">Todo esto lo hace nuestra plataforma <b>TRAZA <span>CO₂</span></b></p>
+  </div>
+</section>
 
-    <div class="cycle">
-      <div class="cycle-inner">
-        <div class="cycle-cap"><h3>Ciclo mensual de operación: 8 días hábiles</h3><span class="src">Del cierre de datos a la lista de casos del mes</span></div>
-        <div class="cycle-row">
-          <div><b>D1</b>Carga</div><div><b>D2</b>Validación</div><div><b>D3</b>Entidades y CO₂</div><div><b>D4</b>Impuesto debido</div><div><b>D5</b>Reglas</div><div><b>D6</b>Puntaje</div><div><b>D7</b>Revisión</div><div><b>D8</b>Asignación</div>
-        </div>
-      </div>
+<section class="why" id="importa">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Por qué importa</p>
+      <h2>Un impuesto justo, un aire más limpio.</h2>
+      <p class="lede">Cuando contaminar cuesta lo que debe, todos ganamos.</p>
     </div>
-
-    <div style="margin-top:56px">
-      <h3 style="margin-bottom:6px">Fuentes de datos</h3>
-      <p class="src" style="margin-bottom:16px">Todas son fuentes institucionales. El acceso a las de otras dependencias se formaliza por convenio.</p>
-      <div class="sources">
-        <div><em>SAT</em><b>Facturas electrónicas (CFDI)</b><span>Compras y ventas de combustibles, con complemento de hidrocarburos</span></div>
-        <div><em>SAT</em><b>Declaraciones de IEPS</b><span>Impuesto declarado por contribuyente y periodo</span></div>
-        <div><em>SAT</em><b>Controles volumétricos</b><span>Recepción, entrega e inventario por instalación (Anexo 21 RMF)</span></div>
-        <div><em>ANAM</em><b>Pedimentos</b><span>Volumen y fracción arancelaria de cada importación</span></div>
-        <div><em>SEMARNAT</em><b>RENE y COA</b><span>Combustible quemado y emisiones por establecimiento</span></div>
-        <div><em>SEMARNAT</em><b>INEM</b><span>Emisiones de azufre como huella del combustóleo y coque quemados</span></div>
-        <div><em>CONUEE</em><b>Poderes caloríficos</b><span>Lista oficial vigente para convertir volumen a energía</span></div>
-      </div>
+    <div class="cards">
+      <div><span class="n">Justicia</span><h3>Paga quien debe pagar</h3><p>Las empresas que cumplen no compiten en desventaja contra las que no declaran todo.</p></div>
+      <div><span class="n">Aire</span><h3>Menos emisiones</h3><p>Un precio real al carbono impulsa combustibles y procesos más limpios.</p></div>
+      <div><span class="n">Recursos</span><h3>Más para todos</h3><p>Lo recuperado regresa al presupuesto público, sin crear impuestos nuevos.</p></div>
     </div>
   </div>
 </section>
 
-<!-- VIDEO -->
-<section class="video-band" id="video">
+<section id="video">
   <div class="wrap vid">
-    <div style="display:grid;gap:16px">
-      <p class="eyebrow">Video corporativo</p>
-      <h2>TRAZA CO₂ en cuatro minutos.</h2>
-      <p class="lede">El problema, cómo opera la plataforma dentro del SAT y por qué la recaudación adicional sale de la ley vigente.</p>
-      <p class="src" style="color:var(--band-muted)">Duración 4:37 · narración en español</p>
+    <div class="head" style="margin-bottom:0">
+      <p class="kicker">En cuatro minutos</p>
+      <h2>Mira cómo funciona.</h2>
+      <p class="lede">El problema, la solución y lo que cambia para el país, explicado paso a paso.</p>
     </div>
-    <video controls preload="metadata" poster="assets/poster.jpg" playsinline aria-label="Video corporativo de TRAZA CO₂, 4 minutos 37 segundos">
+    <video controls preload="metadata" poster="assets/poster.jpg" playsinline aria-label="Video de Cauce y TRAZA CO₂, 4 minutos 37 segundos">
       <source src="assets/video_corporativo.mp4" type="video/mp4">
       Tu navegador no reproduce video MP4.
     </video>
   </div>
 </section>
 
-<!-- IMPLEMENTACIÓN -->
-<section id="implementacion">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Implementación</p>
-      <h2>Un piloto acotado, una compuerta de decisión y escala nacional en tres años.</h2>
-      <p class="lede">El piloto prueba el método con contribuyentes de alto impacto. Solo si cumple sus metas se autoriza la escala.</p>
+<section class="trust" id="confianza">
+  <div class="wrap trust-grid">
+    <div class="head" style="margin-bottom:0">
+      <p class="kicker">Confianza</p>
+      <h2>La información de los contribuyentes no sale del SAT.</h2>
+      <p class="lede">Nuestro sistema se instala dentro de la autoridad. Nosotros ponemos la tecnología; la información la maneja solo personal autorizado.</p>
     </div>
-    <div class="road">
-      <div><div class="rail"></div><span class="when">2027 · inicio</span><h3>Fase 0</h3><p>Calibración del modelo con casos que el SAT ya auditó. Convenios de datos con ANAM y SEMARNAT.</p></div>
-      <div><div class="rail"></div><span class="when">2027</span><span class="n">80 <small>contribuyentes</small></span><h3>Piloto</h3><p>Seis industrias: importadores, química, cemento, siderurgia, generación privada y vidrio.</p></div>
-      <div class="gate"><div class="rail"></div><span class="when">Diciembre 2027</span><h3>Compuerta</h3><p>Decisión de escala con base en recaudación efectiva, precisión de alertas y tiempos de operación.</p></div>
-      <div><div class="rail"></div><span class="when">2028</span><span class="n">3,000 <small>contribuyentes</small></span><h3>Ola 1</h3><p>Incorporación de grandes consumidores industriales y conexión con el centro de análisis de hidrocarburos.</p></div>
-      <div><div class="rail"></div><span class="when">2029 en adelante</span><span class="n">15,000 <small>contribuyentes</small></span><h3>Ola 2 y operación</h3><p>Cobertura nacional con ciclo mensual estable y soporte continuo.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- SEGURIDAD -->
-<section id="seguridad">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Seguridad y cumplimiento</p>
-      <h2>Los datos nunca salen del SAT.</h2>
-      <p class="lede">TRAZA CO₂ se instala dentro de la infraestructura de la autoridad. Cauce entrega el software y el soporte; la información fiscal la opera solo personal autorizado del SAT.</p>
-    </div>
-    <div class="sec-grid">
-      <div><h3>Instalación en las instalaciones del cliente</h3><p>Sin nube externa ni copias fuera del centro de datos de la autoridad. Cumple con el secreto fiscal del art. 69 del CFF.</p></div>
-      <div><h3>Acceso por rol y doble factor</h3><p>Cada usuario ve solo lo que su función requiere. Inicio de sesión con verificación en dos pasos.</p></div>
-      <div><h3>Bitácora inalterable</h3><p>Cada consulta, cambio de regla y resultado queda registrado con usuario, fecha y huella del archivo.</p></div>
-      <div><h3>Reglas con doble aprobación</h3><p>Ningún cambio al motor de reglas entra en producción sin la autorización de dos responsables.</p></div>
-      <div><h3>Explicable ante tribunales</h3><p>Cada cifra se rastrea hasta su archivo de origen, para que el auditor la defienda ante el contribuyente y el tribunal.</p></div>
-      <div><h3>Código en depósito</h3><p>El SAT recibe licencia perpetua y el código fuente en depósito, para garantizar continuidad.</p></div>
-    </div>
-    <div class="badges" aria-label="Marcos de referencia">
-      <span class="p"><b>En proceso</b> · ISO/IEC 27001</span>
-      <span><b>Referencia</b> · NIST CSF</span>
-      <span><b>Referencia</b> · OWASP ASVS</span>
-      <span><b>Diseño conforme</b> · Art. 69 CFF</span>
-      <span><b>Diseño conforme</b> · Ley de protección de datos personales</span>
-    </div>
-  </div>
-</section>
-
-<!-- EMPRESA -->
-<section class="alt" id="empresa">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Quiénes somos</p>
-      <h2>Cauce Inteligencia Tributaria</h2>
-      <p class="lede">Somos una empresa mexicana de tecnología fiscal especializada en trazabilidad de combustibles y carbono. Un cauce es por donde corre un flujo: nosotros seguimos el litro y el impuesto de punta a punta, desde la aduana hasta la chimenea.</p>
-    </div>
-    <div class="why">
-      <div><h3><i></i>Trazabilidad</h3><p>Unimos datos fiscales, aduaneros y ambientales en una sola línea de evidencia por contribuyente, planta y mes.</p></div>
-      <div><h3><i></i>Optimización</h3><p>El auditor trabaja los casos que pagan. El puntaje prioriza por monto cobrable y explica cada decisión.</p></div>
-      <div><h3><i></i>Recaudación fiscal</h3><p>Diseñado sobre la ley vigente, las cuotas oficiales y el método del RENE. Sin reformas para empezar a recaudar.</p></div>
-    </div>
-    <div class="partners">
-      <div><p class="eyebrow">La empresa</p><h3>Cauce Inteligencia Tributaria, S.A.P.I. de C.V.</h3><p>Titular de TRAZA CO₂. Diseña el método de conciliación, el modelo de riesgo y la metodología de carbono, y responde por la licencia y el soporte.</p></div>
-      <div><p class="eyebrow">Socio tecnológico</p><h3>Vektrum</h3><p>Desarrollo, integración e infraestructura. Aporta el equipo de ingeniería para la instalación, la operación y el soporte técnico continuo.</p></div>
-    </div>
-    <div style="margin-top:56px">
-      <h3>Referentes internacionales</h3>
-      <div class="refs">
-        <div><b>+1,000 MUSD</b><span>recaudó el impuesto verde de Chile en sus primeros cuatro años</span><a href="https://www.larepublica.co/globoeconomia/chile-reporto-el-recaudo-de-mas-de-us-1-000-millones-con-el-nuevo-impuesto-verde-3895006" target="_blank" rel="noopener">La República</a></div>
-        <div><b>+870 MUSD</b><span>aumentó la recaudación de impuestos a combustibles en Tanzania con trazabilidad desde 2010</span><a href="https://www.sicpa.com/sites/default/files/2023-07/Tanzania%20FMS%20-%20Case%20Study%20-%20English.pdf" target="_blank" rel="noopener">SICPA, caso de estudio</a></div>
-        <div><b>Brasil</b><span>el regulador de combustibles accede a la factura electrónica del sector para combatir fraudes</span><a href="https://www.canalrural.com.br/nacional/anp-tera-acesso-a-dados-fiscais-para-combater-fraudes-em-combustiveis/" target="_blank" rel="noopener">Canal Rural</a></div>
+    <div style="display:grid;gap:28px">
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><div><b>Secreto fiscal</b><span>Diseñado para cumplir el artículo 69 del Código Fiscal.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><div><b>Decide una persona</b><span>El sistema señala; la autoridad revisa y resuelve.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><div><b>Todo queda registrado</b><span>Cada consulta y cada cálculo se puede rastrear.</span></div></li>
+      </ul>
+      <div>
+        <p style="font-weight:600;margin-bottom:10px">Trabajamos con fuentes y normas oficiales</p>
+        <div class="sources"><span>SAT</span><span>ANAM</span><span>SEMARNAT</span><span>CONUEE</span><span>IPCC</span></div>
+        <p class="note">Mencionarlas no implica convenio ni respaldo de estas instituciones.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACTO -->
 <section class="contact" id="contacto">
   <div class="wrap c-grid">
     <div>
-      <p class="eyebrow">Contacto</p>
-      <h2 style="margin-top:14px">Agenda una demostración de TRAZA CO₂.</h2>
-      <p class="lede" style="margin-top:16px">Mostramos la plataforma con datos sintéticos: carga, conciliación, expediente y puntaje, en una sesión de 30 minutos.</p>
-      <div class="c-info">
-        <div><span>Correo</span><b>[correo de contacto]</b></div>
-        <div><span>Teléfono</span><b>[teléfono]</b></div>
-        <div><span>Oficinas</span><b>[domicilio], Ciudad de México</b></div>
-      </div>
+      <p class="kicker">Contacto</p>
+      <h2 style="margin-top:14px">Hablemos.</h2>
+      <p class="lede" style="margin-top:16px">¿Trabajas en una administración tributaria, eres periodista o quieres saber más? Escríbenos.</p>
+      <p class="mail">[correo de contacto]</p>
     </div>
     <form id="cform" novalidate>
-      <p class="src" style="color:var(--band-muted)">Los campos con <span class="req">*</span> son obligatorios.</p>
-      <div class="f2">
-        <label for="f-nombre"><span>Nombre <span class="req" aria-hidden="true">*</span></span><input id="f-nombre" name="nombre" autocomplete="name" required aria-describedby="e-nombre"><span class="err" id="e-nombre"></span></label>
-        <label for="f-cargo">Cargo<input id="f-cargo" name="cargo" autocomplete="organization-title"></label>
-      </div>
-      <div class="f2">
-        <label for="f-inst"><span>Institución <span class="req" aria-hidden="true">*</span></span><input id="f-inst" name="institucion" autocomplete="organization" required aria-describedby="e-inst"><span class="err" id="e-inst"></span></label>
-        <label for="f-correo"><span>Correo institucional <span class="req" aria-hidden="true">*</span></span><input id="f-correo" name="correo" type="email" autocomplete="email" required aria-describedby="e-correo"><span class="err" id="e-correo"></span></label>
-      </div>
-      <label for="f-tema">Tema
-        <select id="f-tema" name="tema">
-          <option>Demostración de TRAZA CO₂</option>
-          <option>Piloto con una administración tributaria</option>
-          <option>Impuestos estatales al carbono</option>
-          <option>Alianzas e inversión</option>
-        </select>
-      </label>
-      <label for="f-msg">Mensaje<textarea id="f-msg" name="mensaje"></textarea></label>
+      <label for="f-nombre"><span>Nombre</span><input id="f-nombre" name="nombre" autocomplete="name" required aria-describedby="e-nombre"><span class="err" id="e-nombre"></span></label>
+      <label for="f-correo"><span>Correo</span><input id="f-correo" name="correo" type="email" autocomplete="email" required aria-describedby="e-correo"><span class="err" id="e-correo"></span></label>
+      <label for="f-msg"><span>Mensaje</span><textarea id="f-msg" name="mensaje"></textarea></label>
       <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-        <button class="btn pri" type="submit">Solicitar demostración</button>
+        <button class="btn pri" type="submit">Enviar mensaje</button>
         <p class="form-msg" id="form-msg" role="status"></p>
       </div>
     </form>
@@ -643,34 +303,18 @@ input[aria-invalid="true"]{border-color:#ff8f7f}
 <footer>
   <div class="wrap">
     <svg viewBox="0 0 1320 340" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M30 70 C130 70 150 170 250 170" stroke="#8fb1cf" stroke-width="22"/><path d="M30 270 C130 270 150 170 250 170" stroke="#5f86ab" stroke-width="22"/><path d="M30 170 L250 170" stroke="#f4f6f8" stroke-width="22"/><path d="M250 170 L320 170" stroke="#3fbf9a" stroke-width="34"/></g><circle cx="320" cy="170" r="30" fill="#3fbf9a"/><text x="390" y="200" font-family="Fira Sans,Helvetica,Arial,sans-serif" font-size="128" font-weight="800" letter-spacing="10" fill="#f4f6f8">CAUCE</text><text x="394" y="262" font-family="Helvetica,Arial,sans-serif" font-size="38" letter-spacing="6" fill="#a9bccd">INTELIGENCIA TRIBUTARIA</text></svg>
-    <div style="display:grid;gap:10px">
-      <p>© 2026 Cauce Inteligencia Tributaria, S.A.P.I. de C.V. TRAZA CO₂ es una marca de Cauce.</p>
-      <p>Las cifras oficiales citan su fuente y año. Las cifras de recaudación adicional son proyecciones del modelo de Cauce con la ley y las cuotas vigentes. Este sitio no contiene información de contribuyentes; los ejemplos son ilustrativos.</p>
-    </div>
+    <p>© 2026 Cauce Inteligencia Tributaria, S.A.P.I. de C.V. TRAZA CO₂ es una marca de Cauce.</p>
   </div>
 </footer>
 
 <script>
 (function(){
   var f=document.getElementById('cform'),m=document.getElementById('form-msg');
-  var msgs={'f-nombre':'Escribe tu nombre.','f-inst':'Escribe tu institución o empresa.','f-correo':'Escribe un correo válido, por ejemplo nombre@institucion.gob.mx.'};
-  function check(i){
-    var v=i.value.trim(),ok=v&&(i.type!=='email'||/^\S+@\S+\.\S+$/.test(v));
-    var e=document.getElementById(i.getAttribute('aria-describedby'));
-    i.setAttribute('aria-invalid',ok?'false':'true'); e.textContent=ok?'':msgs[i.id]; return ok;
-  }
+  var msgs={'f-nombre':'Escribe tu nombre.','f-correo':'Escribe un correo válido, por ejemplo nombre@correo.com.'};
+  function check(i){var v=i.value.trim(),ok=v&&(i.type!=='email'||/^\S+@\S+\.\S+$/.test(v));var e=document.getElementById(i.getAttribute('aria-describedby'));i.setAttribute('aria-invalid',ok?'false':'true');e.textContent=ok?'':msgs[i.id];return ok;}
   [].forEach.call(f.querySelectorAll('[required]'),function(i){i.addEventListener('blur',function(){if(i.value)check(i)})});
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    var bad=[].filter.call(f.querySelectorAll('[required]'),function(i){return !check(i)});
-    if(bad.length){m.textContent='Revisa los campos marcados.';bad[0].focus();return;}
-    m.textContent='Borrador: este formulario todavía no envía mensajes. Escríbenos al correo de contacto.';
-  });
-  var menu=document.getElementById('menu');
-  [].forEach.call(menu.querySelectorAll('a'),function(a){a.addEventListener('click',function(){menu.open=false})});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary').focus()}});
+  f.addEventListener('submit',function(e){e.preventDefault();var bad=[].filter.call(f.querySelectorAll('[required]'),function(i){return !check(i)});if(bad.length){m.textContent='Revisa los campos marcados.';bad[0].focus();return;}m.textContent='Borrador: este formulario todavía no envía mensajes. Escríbenos al correo de contacto.';});
 })();
-
 (function(){
   var cv=document.getElementById('flowcv'); if(!cv) return;
   var ctx=cv.getContext('2d'), W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2);
