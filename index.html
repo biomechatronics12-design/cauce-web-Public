@@ -5,16 +5,16 @@
 <meta name="description" content="Cauce Inteligencia Tributaria desarrolla TRAZA CO₂, la plataforma que concilia el combustible fósil importado, vendido, facturado y quemado contra el IEPS al carbono declarado.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600&family=Fira+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: banda marina de marca arriba, secciones claras en columna de 1120px, el flujo de tres fuentes que convergen como hilo conductor */
 :root{
   --bg:#f4f6f8; --surface:#ffffff; --ink:#0b1f33; --muted:#4a5f73; --line:#d6dee6;
   --steel:#2d5b85; --mist:#6a8fb4; --green:#1f9e7a; --green-ink:#157a5e; --warn:#8f5a0a;
   --band:#0b1f33; --band-2:#13304d; --band-ink:#f4f6f8; --band-muted:#a9bccd; --band-line:#244566; --band-green:#3fbf9a;
-  --f-display:"Manrope","Helvetica Neue",Arial,sans-serif;
-  --f-body:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --f-display:"Fira Sans","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif;
+  --f-mono:"Fira Mono",ui-monospace,Menlo,Consolas,monospace;
   --wrap:1120px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
@@ -29,16 +29,18 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--band)}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:3px}
 .wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.01em}
-h2{font-size:clamp(1.7rem,1.2rem + 2vw,2.5rem);line-height:1.15;font-weight:800}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.022em}
+h3{letter-spacing:-.01em}
+h2{font-size:clamp(1.8rem,1.2rem + 2.3vw,2.75rem);line-height:1.08;font-weight:700}
 h3{font-size:1.1rem;font-weight:700;line-height:1.3}
 p{margin:0}
-.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green-ink);font-weight:500}
+.eyebrow::before{content:"§ ";opacity:.7}
+.eyebrow{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green-ink);font-weight:500}
 .lede{color:var(--muted);font-size:1.075rem;max-width:62ch}
 .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
 .src{font-size:.82rem;line-height:1.5;color:var(--muted);font-family:var(--f-mono)}
@@ -64,22 +66,32 @@ section{padding-block:clamp(56px,8vw,96px)}
 
 
 /* ---------- hero ---------- */
-.hero{background:var(--band);color:var(--band-ink);padding-block:clamp(48px,7vw,88px) 0;overflow:hidden}
+.hero{background:radial-gradient(1200px 520px at 78% 38%,rgba(63,191,154,.10),transparent 60%),linear-gradient(var(--band-line) 1px,transparent 1px) 0 0/100% 48px,linear-gradient(90deg,var(--band-line) 1px,transparent 1px) 0 0/48px 100%,var(--band);background-blend-mode:normal;color:var(--band-ink);padding-block:clamp(48px,7vw,96px) 0;overflow:hidden;position:relative}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--band) 100%),linear-gradient(90deg,var(--band) 0%,rgba(11,31,51,.86) 40%,rgba(11,31,51,.55) 100%);pointer-events:none}
+.hero>.wrap{position:relative;z-index:1}
 .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
-.hero h1{font-size:clamp(2.1rem,1.3rem + 3.4vw,3.6rem);line-height:1.06;font-weight:800}
+.hero h1{font-size:clamp(2.3rem,1.2rem + 4vw,4.1rem);line-height:1.02;font-weight:800;letter-spacing:-.03em}
 .hero h1 em{font-style:normal;color:var(--band-green)}
 .hero .lede{color:var(--band-muted);margin-top:22px}
 .hero .eyebrow{color:var(--band-green)}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 .hero-txt{min-width:0;display:grid;gap:0}
 .flow{width:100%;height:auto;display:block}
+.stage{position:relative;aspect-ratio:620/380;max-width:100%;min-width:0}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage .lbl{position:absolute;font-family:var(--f-mono);font-size:.78rem;line-height:1.35;color:var(--band-muted);letter-spacing:.04em}
+.stage .lbl b{display:block;color:var(--band-ink);font-weight:500;letter-spacing:.12em;font-size:.74rem}
+.stage .lbl.out b{color:var(--band-green)}
+.stage .readout{position:absolute;right:0;bottom:2%;font-family:var(--f-mono);font-size:.74rem;color:var(--band-muted);border:1px solid var(--band-line);background:rgba(4,13,25,.6);padding:8px 10px;border-radius:6px;font-variant-numeric:tabular-nums}
+.stage .readout span{color:var(--band-green)}
+@media (max-width:620px){.stage{aspect-ratio:620/440}.stage .lbl{font-size:.7rem}.stage .lbl b{font-size:.68rem}.stage .readout{display:none}.stage .lbl.mid{top:31%!important}.stage .lbl.out{left:auto!important;right:0;top:24%!important;text-align:right}.stage .lbl.out .x{display:none}}
 .flow text{font-family:var(--f-mono)}
 .flow .stream{stroke-dasharray:6 10;animation:run 1.6s linear infinite}
 @keyframes run{to{stroke-dashoffset:-32}}
 .hero-strip{margin-top:clamp(48px,6vw,72px);border-top:1px solid var(--band-line);display:grid;grid-template-columns:repeat(4,1fr)}
 .hero-strip div{padding:24px 20px 28px;border-left:1px solid var(--band-line);display:grid;gap:6px;align-content:start}
 .hero-strip div:first-child{border-left:0;padding-left:0}
-.hero-strip b{font-family:var(--f-display);font-size:clamp(1.4rem,1rem + 1.2vw,1.9rem);font-weight:800;font-variant-numeric:tabular-nums;color:var(--band-ink)}
+.hero-strip b{font-family:var(--f-display);font-size:clamp(1.6rem,1rem + 1.6vw,2.3rem);font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--band-ink)}
 .hero-strip span{color:var(--band-muted);font-size:.86rem;line-height:1.45}
 .hero-strip small{font-family:var(--f-mono);font-size:.76rem;color:var(--band-muted)}
 @media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-strip{grid-template-columns:1fr 1fr}.hero-strip div:nth-child(3){border-left:0;padding-left:0}.hero-strip div:nth-child(n+3){border-top:1px solid var(--band-line)}}
@@ -93,7 +105,7 @@ section{padding-block:clamp(56px,8vw,96px)}
 .points div{display:grid;gap:4px;padding-left:16px;border-left:2px solid var(--line)}
 .points div:first-child{border-left-color:var(--green)}
 .points p{color:var(--muted)}
-.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px 24px 18px}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px 24px 18px;box-shadow:0 1px 0 var(--line),0 18px 40px -28px rgba(11,31,51,.35)}
 .chart h3{margin-bottom:4px}
 .chart .sub{color:var(--muted);font-size:.88rem;margin-bottom:20px}
 .bars{display:grid;gap:9px}
@@ -277,7 +289,7 @@ input[aria-invalid="true"]{border-color:#ff8f7f}
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#inicio" aria-label="Cauce Inteligencia Tributaria, inicio">
-      <svg viewBox="0 0 1320 340" role="img" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M30 70 C130 70 150 170 250 170" stroke="#8fb1cf" stroke-width="22"/><path d="M30 270 C130 270 150 170 250 170" stroke="#5f86ab" stroke-width="22"/><path d="M30 170 L250 170" stroke="#f4f6f8" stroke-width="22"/><path d="M250 170 L320 170" stroke="#3fbf9a" stroke-width="34"/></g><circle cx="320" cy="170" r="30" fill="#3fbf9a"/><text x="390" y="200" font-family="Manrope,Helvetica,Arial,sans-serif" font-size="128" font-weight="800" letter-spacing="10" fill="#f4f6f8">CAUCE</text><text x="394" y="262" font-family="Helvetica,Arial,sans-serif" font-size="38" letter-spacing="6" fill="#a9bccd">INTELIGENCIA TRIBUTARIA</text></svg>
+      <svg viewBox="0 0 1320 340" role="img" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M30 70 C130 70 150 170 250 170" stroke="#8fb1cf" stroke-width="22"/><path d="M30 270 C130 270 150 170 250 170" stroke="#5f86ab" stroke-width="22"/><path d="M30 170 L250 170" stroke="#f4f6f8" stroke-width="22"/><path d="M250 170 L320 170" stroke="#3fbf9a" stroke-width="34"/></g><circle cx="320" cy="170" r="30" fill="#3fbf9a"/><text x="390" y="200" font-family="Fira Sans,Helvetica,Arial,sans-serif" font-size="128" font-weight="800" letter-spacing="10" fill="#f4f6f8">CAUCE</text><text x="394" y="262" font-family="Helvetica,Arial,sans-serif" font-size="38" letter-spacing="6" fill="#a9bccd">INTELIGENCIA TRIBUTARIA</text></svg>
     </a>
     <nav class="nav" aria-label="Principal">
       <a href="#problema">El problema</a>
@@ -315,29 +327,14 @@ input[aria-invalid="true"]{border-color:#ff8f7f}
         </div>
         <div class="proof"><b>+457–810 mdp</b><span>adicionales al año de IEPS al carbono, sin cambiar la ley<small>Proyección del modelo de Cauce · cuotas 2026</small></span></div>
       </div>
-      <svg class="flow" viewBox="0 0 620 360" role="img" aria-labelledby="flowT">
-        <title id="flowT">Tres fuentes de evidencia, lo que entró, lo que salió y lo que se quemó, convergen en un indicio con evidencia</title>
-        <g fill="none" stroke-linecap="round">
-          <path d="M20 60 C170 60 200 180 330 180" stroke="#244566" stroke-width="16"/>
-          <path d="M20 180 L330 180" stroke="#244566" stroke-width="16"/>
-          <path d="M20 300 C170 300 200 180 330 180" stroke="#244566" stroke-width="16"/>
-          <path class="stream" d="M20 60 C170 60 200 180 330 180" stroke="#8fb1cf" stroke-width="4"/>
-          <path class="stream" d="M20 180 L330 180" stroke="#f4f6f8" stroke-width="4"/>
-          <path class="stream" d="M20 300 C170 300 200 180 330 180" stroke="#5f86ab" stroke-width="4"/>
-          <path d="M330 180 L420 180" stroke="#3fbf9a" stroke-width="22"/>
-        </g>
-        <circle cx="430" cy="180" r="22" fill="#3fbf9a"/>
-        <circle cx="430" cy="180" r="34" fill="none" stroke="#3fbf9a" stroke-opacity=".35" stroke-width="2"/>
-        <text x="20" y="28" fill="#a9bccd" font-size="13" letter-spacing="1.5">LO QUE ENTRÓ</text>
-        <text x="20" y="44" fill="#f4f6f8" font-size="13">pedimentos · CFDI de compra</text>
-        <text x="20" y="148" fill="#a9bccd" font-size="13" letter-spacing="1.5">LO QUE SALIÓ</text>
-        <text x="20" y="164" fill="#f4f6f8" font-size="13">CFDI de venta · volumétricos</text>
-        <text x="20" y="328" fill="#a9bccd" font-size="13" letter-spacing="1.5">LO QUE SE QUEMÓ</text>
-        <text x="20" y="344" fill="#f4f6f8" font-size="13">RENE · COA · INEM</text>
-        <text x="472" y="166" fill="#3fbf9a" font-size="13" letter-spacing="1.5">INDICIO</text>
-        <text x="472" y="184" fill="#f4f6f8" font-size="13">con evidencia</text>
-        <text x="472" y="202" fill="#a9bccd" font-size="13">t CO₂ · $ IEPS</text>
-      </svg>
+      <div class="stage" role="img" aria-label="Tres fuentes de evidencia, lo que entró, lo que salió y lo que se quemó, convergen en un indicio con evidencia en toneladas de CO₂ y pesos de IEPS">
+        <canvas id="flowcv" aria-hidden="true"></canvas>
+        <div class="lbl" style="left:0;top:4%"><b>LO QUE ENTRÓ</b>pedimentos · CFDI de compra</div>
+        <div class="lbl mid" style="left:0;top:38%"><b>LO QUE SALIÓ</b>CFDI de venta · volumétricos</div>
+        <div class="lbl" style="left:0;bottom:4%"><b>LO QUE SE QUEMÓ</b>RENE · COA · INEM</div>
+        <div class="lbl out" style="left:76%;top:34%"><b>INDICIO</b>con evidencia<span class="x"><br>t CO₂ · $ IEPS</span></div>
+        <div class="readout" aria-hidden="true">Caso ilustrativo · Δ <span>27 M litros</span> · <span>$6.2 mdp</span></div>
+      </div>
     </div>
     <div class="hero-strip" aria-label="Cifras oficiales">
       <div><b class="mono">10,517.7 mdp</b><span>IEPS al carbono estimado para 2026</span><small>Ley de Ingresos de la Federación 2026</small></div>
@@ -620,7 +617,7 @@ input[aria-invalid="true"]{border-color:#ff8f7f}
 
 <footer>
   <div class="wrap">
-    <svg viewBox="0 0 1320 340" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M30 70 C130 70 150 170 250 170" stroke="#8fb1cf" stroke-width="22"/><path d="M30 270 C130 270 150 170 250 170" stroke="#5f86ab" stroke-width="22"/><path d="M30 170 L250 170" stroke="#f4f6f8" stroke-width="22"/><path d="M250 170 L320 170" stroke="#3fbf9a" stroke-width="34"/></g><circle cx="320" cy="170" r="30" fill="#3fbf9a"/><text x="390" y="200" font-family="Manrope,Helvetica,Arial,sans-serif" font-size="128" font-weight="800" letter-spacing="10" fill="#f4f6f8">CAUCE</text><text x="394" y="262" font-family="Helvetica,Arial,sans-serif" font-size="38" letter-spacing="6" fill="#a9bccd">INTELIGENCIA TRIBUTARIA</text></svg>
+    <svg viewBox="0 0 1320 340" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M30 70 C130 70 150 170 250 170" stroke="#8fb1cf" stroke-width="22"/><path d="M30 270 C130 270 150 170 250 170" stroke="#5f86ab" stroke-width="22"/><path d="M30 170 L250 170" stroke="#f4f6f8" stroke-width="22"/><path d="M250 170 L320 170" stroke="#3fbf9a" stroke-width="34"/></g><circle cx="320" cy="170" r="30" fill="#3fbf9a"/><text x="390" y="200" font-family="Fira Sans,Helvetica,Arial,sans-serif" font-size="128" font-weight="800" letter-spacing="10" fill="#f4f6f8">CAUCE</text><text x="394" y="262" font-family="Helvetica,Arial,sans-serif" font-size="38" letter-spacing="6" fill="#a9bccd">INTELIGENCIA TRIBUTARIA</text></svg>
     <div style="display:grid;gap:10px">
       <p>© 2026 Cauce Inteligencia Tributaria, S.A.P.I. de C.V. TRAZA CO₂ es una marca de Cauce.</p>
       <p>Las cifras oficiales citan su fuente y año. Las cifras de recaudación adicional son proyecciones del modelo de Cauce con la ley y las cuotas vigentes. Este sitio no contiene información de contribuyentes; los ejemplos son ilustrativos.</p>
@@ -647,6 +644,35 @@ input[aria-invalid="true"]{border-color:#ff8f7f}
   var menu=document.getElementById('menu');
   [].forEach.call(menu.querySelectorAll('a'),function(a){a.addEventListener('click',function(){menu.open=false})});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary').focus()}});
+})();
+
+(function(){
+  var cv=document.getElementById('flowcv'); if(!cv) return;
+  var ctx=cv.getContext('2d'), W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2);
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // trayectorias en coordenadas 0..1 (x sobre ancho, y sobre alto)
+  var P=[
+    {c:'#8fb1cf',p:[[.02,.18],[.30,.18],[.36,.50],[.62,.50]]},
+    {c:'#f4f6f8',p:[[.02,.52],[.25,.52],[.40,.50],[.62,.50]]},
+    {c:'#6f97bd',p:[[.02,.84],[.30,.84],[.36,.50],[.62,.50]]}
+  ], node=[.70,.50];
+  function bz(q,t){var u=1-t;return[u*u*u*q[0][0]+3*u*u*t*q[1][0]+3*u*t*t*q[2][0]+t*t*t*q[3][0],u*u*u*q[0][1]+3*u*u*t*q[1][1]+3*u*t*t*q[2][1]+t*t*t*q[3][1]]}
+  var parts=[];for(var i=0;i<150;i++)parts.push({k:i%3,t:Math.random(),v:.0018+Math.random()*.0026,o:(Math.random()-.5)*.018});
+  function size(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function frame(ts){
+    ctx.clearRect(0,0,W,H);
+    P.forEach(function(s){ctx.beginPath();var a=s.p;ctx.moveTo(a[0][0]*W,a[0][1]*H);ctx.bezierCurveTo(a[1][0]*W,a[1][1]*H,a[2][0]*W,a[2][1]*H,a[3][0]*W,a[3][1]*H);ctx.strokeStyle='rgba(143,177,207,.16)';ctx.lineWidth=Math.max(10,H*.045);ctx.lineCap='round';ctx.stroke();});
+    ctx.beginPath();ctx.moveTo(.62*W,.5*H);ctx.lineTo(node[0]*W,.5*H);ctx.strokeStyle='#3fbf9a';ctx.lineWidth=Math.max(12,H*.06);ctx.stroke();
+    parts.forEach(function(q){var s=P[q.k];var pt=bz(s.p,q.t);var y=pt[1]+q.o*(1-q.t);ctx.globalAlpha=.35+.65*q.t;ctx.fillStyle=s.c;ctx.beginPath();ctx.arc(pt[0]*W,y*H,1.6+q.t*1.2,0,6.283);ctx.fill();if(!still){q.t+=q.v;if(q.t>1){q.t=0;q.v=.0018+Math.random()*.0026}}});
+    ctx.globalAlpha=1;
+    var pulse=still?0:(Math.sin((ts||0)/520)+1)/2, R=Math.max(14,H*.06);
+    ctx.beginPath();ctx.arc(node[0]*W,node[1]*H,R*(1.5+pulse*.5),0,6.283);ctx.strokeStyle='rgba(63,191,154,'+(.45-pulse*.3)+')';ctx.lineWidth=2;ctx.stroke();
+    ctx.beginPath();ctx.arc(node[0]*W,node[1]*H,R,0,6.283);ctx.fillStyle='#3fbf9a';ctx.fill();
+    if(!still&&!document.hidden) requestAnimationFrame(frame);
+  }
+  size(); frame(0); if(!still) requestAnimationFrame(frame);
+  window.addEventListener('resize',function(){size();if(still)frame(0)});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden&&!still)requestAnimationFrame(frame)});
 })();
 </script>
 </body></html>
