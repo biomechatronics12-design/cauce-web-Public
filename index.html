@@ -63,7 +63,7 @@ section{padding-block:clamp(72px,10vw,128px)}
 
 /* portada */
 .hero{background:radial-gradient(900px 480px at 80% 45%,rgba(63,191,154,.13),transparent 65%),var(--band);color:var(--band-ink);padding-block:clamp(56px,8vw,104px);overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
 .hero-grid>*{min-width:0}
 .hero h1{font-size:clamp(2.8rem,1.4rem + 5.6vw,5.4rem);line-height:.98;font-weight:800;letter-spacing:-.04em}
 .hero h1 em{font-style:normal;color:var(--band-green)}
@@ -71,36 +71,54 @@ section{padding-block:clamp(72px,10vw,128px)}
 .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
 .stage{position:relative;aspect-ratio:620/400;max-width:100%}
 .stage canvas{position:absolute;inset:0;width:100%;height:100%}
-.stage .lbl{position:absolute;font-family:var(--f-display);font-weight:600;font-size:.95rem;color:var(--band-ink)}
+.stage .lbl{position:absolute;font-family:var(--f-display);font-weight:600;font-size:1.02rem;color:var(--band-ink);letter-spacing:.01em}
 .stage .lbl.out{color:var(--band-green)}
 @media (max-width:860px){.hero-grid{grid-template-columns:1fr}.stage{max-width:520px}}
 @media (max-width:620px){.stage .lbl{font-size:.82rem}.stage .lbl.out{left:auto!important;right:0;top:22%!important;text-align:right}}
 
 /* cifra */
 .big{background:var(--surface);border-bottom:1px solid var(--line)}
-.big .wrap{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:center}
-.big .num{font-family:var(--f-display);font-weight:800;font-size:clamp(3.4rem,1.6rem + 7vw,7rem);line-height:.9;letter-spacing:-.045em;color:var(--green-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.big .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,6vw,80px);align-items:center}
+.big .wrap>*{min-width:0}
+.big-copy{display:grid;gap:14px}
+.meter{margin:0;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px 24px;display:grid;gap:18px}
+.meter figcaption{font-family:var(--f-display);font-weight:700;font-size:1.05rem}
+.meter .row{display:grid;grid-template-columns:96px 1fr 68px;gap:14px;align-items:center}
+.meter .tag{font-weight:600;color:var(--muted);font-size:.95rem}
+.meter .bar{display:flex;height:34px;border-radius:8px;overflow:hidden;background:var(--line)}
+.meter .seg.now{background:var(--steel)}
+.meter .seg.plus{background:var(--green);box-shadow:inset 3px 0 0 var(--surface)}
+.meter .val{font-family:var(--f-display);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.meter .legend{display:flex;gap:20px;flex-wrap:wrap;font-size:.92rem;color:var(--muted)}
+.meter .k{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:8px;vertical-align:-1px}
+.meter .k.now{background:var(--steel)}.meter .k.plus{background:var(--green)}
+@media (max-width:460px){.meter .row{grid-template-columns:1fr 64px}.meter .tag{grid-column:1/-1}}
+.big .num{margin:4px 0 6px;font-family:var(--f-display);font-weight:800;font-size:clamp(3.4rem,1.6rem + 6vw,6.2rem);line-height:.9;letter-spacing:-.045em;color:var(--green-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
 .big .num .upto{display:block;font-size:.22em;letter-spacing:0;font-weight:700;color:var(--muted);margin-bottom:6px}
 .big .num small{display:block;font-size:.26em;letter-spacing:0;font-weight:700;color:var(--ink);margin-top:10px}
-.big h2{font-size:clamp(1.6rem,1.1rem + 1.8vw,2.3rem)}
-.big p{color:var(--muted);margin-top:14px;max-width:48ch}
-.note{font-size:.88rem;color:var(--muted);margin-top:18px}
-@media (max-width:760px){.big .wrap{grid-template-columns:1fr}}
+.big h2{font-size:clamp(1.5rem,1.1rem + 1.4vw,2rem)}
+.big-copy>p:not(.num):not(.kicker){color:var(--muted);max-width:46ch}
+.note{font-size:.86rem;color:var(--muted);line-height:1.5}
+@media (max-width:860px){.big .wrap{grid-template-columns:1fr}}
 
 /* pasos */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
-.steps li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px 32px;display:grid;gap:14px;align-content:start;counter-increment:s;position:relative}
-.steps .ic{width:56px;height:56px;border-radius:14px;background:var(--tint);color:var(--green-ink);display:grid;place-items:center}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:s;position:relative}
+.steps::before{content:"";position:absolute;left:28px;right:16%;top:28px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--mist),var(--steel) 50%,var(--green))}
+.steps li{padding:0 32px 0 0;display:grid;gap:12px;align-content:start;counter-increment:s;position:relative}
+.steps .ic{width:56px;height:56px;border-radius:50%;background:var(--surface);border:3px solid var(--steel);color:var(--ink);display:grid;place-items:center;position:relative;z-index:1;margin-bottom:10px}
+.steps li:first-child .ic{border-color:var(--mist)}
+.steps li:last-child .ic{background:var(--green);border-color:var(--green);color:#062018}
 .steps .ic svg{width:28px;height:28px}
-.steps li::after{content:"Paso " counter(s);position:absolute;top:30px;right:28px;font-family:var(--f-display);font-weight:600;font-size:.85rem;color:var(--muted)}
+.steps li::before{content:"Paso " counter(s);font-family:var(--f-display);font-weight:600;font-size:.88rem;color:var(--green-ink);order:1}
+.steps .ic{order:0}.steps h3{order:2;font-size:1.45rem}.steps p{order:3}
 .steps p{color:var(--muted)}
-@media (max-width:860px){.steps{grid-template-columns:1fr}}
+@media (max-width:860px){.steps{grid-template-columns:1fr;gap:36px}.steps::before{left:27px;right:auto;top:28px;bottom:auto;width:3px;height:calc(100% - 150px);background:linear-gradient(180deg,var(--mist),var(--steel) 50%,var(--green))}.steps li{padding:0 0 0 80px;min-height:56px}.steps .ic{position:absolute;left:0;top:0;margin:0}}
 .product{margin-top:28px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:1rem}
 .product b{font-family:var(--f-display);color:var(--ink)}
 .product b span{color:var(--green-ink)}
 
 /* por qué importa */
-.why{background:var(--band);color:var(--band-ink)}
+.why{background:radial-gradient(700px 360px at 10% 0%,rgba(63,191,154,.10),transparent 70%),var(--band);color:var(--band-ink)}
 .why .kicker{color:var(--band-green)}
 .why .lede{color:var(--band-muted)}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--band-line)}
@@ -191,12 +209,19 @@ footer p{max-width:70ch}
 
 <section class="big" aria-labelledby="bigT">
   <div class="wrap">
-    <p class="num"><span class="upto">Hasta</span>$810<small>millones de pesos al año</small></p>
-    <div>
+    <div class="big-copy">
+      <p class="kicker">Lo que está en juego</p>
+      <p class="num"><span class="upto">Hasta</span>$810<small>millones de pesos más cada año</small></p>
       <h2 id="bigT">Dinero que hoy no llega a las arcas públicas.</h2>
-      <p>Es lo que se podría recuperar cada año del impuesto al carbono solo con cobrar bien lo que ya marca la ley. Recursos para escuelas, hospitales y transporte.</p>
-      <p class="note">Escenario alto de nuestra proyección; el escenario base es de 457 millones. Calculado con las cuotas oficiales de 2026.</p>
+      <p>Se recupera solo con cobrar bien lo que ya marca la ley. Son recursos para escuelas, hospitales y transporte.</p>
     </div>
+    <figure class="meter" aria-labelledby="meterT">
+      <figcaption id="meterT">Impuesto al carbono, millones de pesos al año</figcaption>
+      <div class="row"><span class="tag">Hoy</span><div class="bar"><span class="seg now" style="width:92.85%"></span></div><span class="val">10,518</span></div>
+      <div class="row"><span class="tag">Con Cauce</span><div class="bar"><span class="seg now" style="width:92.85%"></span><span class="seg plus" style="width:7.15%"></span></div><span class="val">11,328</span></div>
+      <div class="legend"><span><i class="k now"></i>Lo que se recauda hoy</span><span><i class="k plus"></i>Lo que se recupera: +8%</span></div>
+      <p class="note">Hoy: Ley de Ingresos de la Federación 2026. Recuperación: escenario alto de nuestra proyección con las cuotas oficiales de 2026; el escenario base es de 457 millones.</p>
+    </figure>
   </div>
 </section>
 
