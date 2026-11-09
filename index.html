@@ -1,29 +1,35 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
 <title>Cauce Inteligencia Tributaria</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Cauce ayuda a que el impuesto al carbono se cobre completo, con datos que ya existen y sin cambiar la ley.">
+<meta name="description" content="Cauce desarrolla TRAZA CO₂, la plataforma que mide el carbono de cada contribuyente y ayuda a cobrar completo el impuesto al carbono, con la ley vigente.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&family=Fira+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: una sola historia en cinco pantallas. Portada marina con las tres corrientes de la marca, luego bandas claras y amplias, una idea por banda */
+/* Layout: portada marina con las tres corrientes de la marca; secciones amplias que alternan claro y marino; el diagrama de la plataforma es el centro de la página */
 :root{
   --bg:#f4f6f8; --surface:#ffffff; --ink:#0b1f33; --muted:#4a5f73; --line:#d9e1e8;
   --steel:#2d5b85; --mist:#6a8fb4; --green:#1f9e7a; --green-ink:#14775b; --tint:#e6f4ef;
-  --band:#0b1f33; --band-2:#13304d; --band-ink:#f4f6f8; --band-muted:#b4c4d3; --band-line:#244566; --band-green:#3fbf9a;
+  --band:#0b1f33; --band-2:#13304d; --band-3:#1a3d60; --band-ink:#f4f6f8; --band-muted:#b4c4d3; --band-line:#244566; --band-green:#3fbf9a;
   --f-display:"Fira Sans","Helvetica Neue",Arial,sans-serif;
   --f-body:"Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif;
-  --wrap:1080px; --r:14px;
+  --f-mono:"Fira Mono",ui-monospace,Menlo,Consolas,monospace;
+  --wrap:1140px; --r:14px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#071425; --surface:#0d2139; --ink:#eaf0f5; --muted:#a8bacb; --line:#1d3a59;
   --steel:#8fb1cf; --mist:#6f97bd; --green:#3fbf9a; --green-ink:#4fd0aa; --tint:#0f2d33;
-  --band:#040d19; --band-2:#0b1f33; --band-line:#1d3a59; color-scheme:dark}}
+  --band:#040d19; --band-2:#0b1f33; --band-3:#13304d; --band-line:#1d3a59; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#071425; --surface:#0d2139; --ink:#eaf0f5; --muted:#a8bacb; --line:#1d3a59;
   --steel:#8fb1cf; --mist:#6f97bd; --green:#3fbf9a; --green-ink:#4fd0aa; --tint:#0f2d33;
-  --band:#040d19; --band-2:#0b1f33; --band-line:#1d3a59; color-scheme:dark}
+  --band:#040d19; --band-2:#0b1f33; --band-3:#13304d; --band-line:#1d3a59; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -33,189 +39,258 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 a{color:inherit}
 :focus-visible{outline:3px solid var(--band-green);outline-offset:3px;border-radius:4px}
 .wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.025em}
-h2{font-size:clamp(2rem,1.3rem + 2.6vw,3rem);line-height:1.05;font-weight:800}
-h3{font-size:1.25rem;line-height:1.25;font-weight:700;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.022em}
+h2{font-size:clamp(1.9rem,1.3rem + 2.2vw,2.75rem);line-height:1.08;font-weight:700}
+h3{font-size:1.2rem;line-height:1.3;font-weight:600;letter-spacing:-.01em}
 p{margin:0}
-.kicker{font-family:var(--f-display);font-weight:600;font-size:.95rem;color:var(--green-ink)}
-.lede{font-size:1.2rem;color:var(--muted);max-width:56ch}
-section{padding-block:clamp(72px,10vw,128px)}
-.head{display:grid;gap:16px;margin-bottom:clamp(36px,5vw,56px);max-width:720px}
+.kicker{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green-ink)}
+.lede{font-size:1.15rem;color:var(--muted);max-width:58ch}
+section{padding-block:clamp(72px,9vw,120px)}
+.head{display:grid;gap:16px;margin-bottom:clamp(36px,5vw,56px);max-width:740px}
+.dark{background:var(--band);color:var(--band-ink)}
+.dark .kicker{color:var(--band-green)} .dark .lede{color:var(--band-muted)}
+.alt{background:var(--surface);border-block:1px solid var(--line)}
 .skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--band-green);color:#062018;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none}
 .skip:focus{top:calc(env(safe-area-inset-top,0px) + 10px)}
+/* aparición al desplazarse: el contenido siempre es visible; solo se desliza un poco */
+.rv{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv.pre{transform:translateY(18px)}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-family:var(--f-display);font-weight:700;font-size:1.02rem;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
-.btn:hover{transform:translateY(-1px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:8px;font-family:var(--f-display);font-weight:600;font-size:1rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s}
 .btn.pri{background:var(--band-green);color:#062018}
 .btn.pri:hover{background:#5ad2ae}
 .btn.ghost{border-color:var(--band-line);color:var(--band-ink)}
+.btn.ghost:hover{border-color:var(--band-muted)}
 .btn svg{width:18px;height:18px}
 
 /* barra */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(11,31,51,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--band-line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
-.brand svg{height:36px;width:auto;display:block}
-.nav{display:flex;gap:30px;align-items:center}
-.nav a{color:var(--band-muted);text-decoration:none;font-weight:600;font-size:1rem}
-.nav a:hover{color:var(--band-ink)}
-.nav .btn{min-height:44px;padding:0 20px;font-size:.95rem;color:#062018}
-@media (max-width:760px){.nav a:not(.btn){display:none}}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(11,31,51,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--band-line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:70px}
+.brand svg{height:34px;width:auto;display:block}
+.nav{display:flex;gap:28px;align-items:center}
+.nav a{color:var(--band-muted);text-decoration:none;font-weight:600;font-size:.97rem}
+.nav a:hover,.nav a.on{color:var(--band-ink)}
+.nav .btn{min-height:42px;padding:0 18px;font-size:.92rem;color:#062018}
+.menu{display:none;position:relative}
+.menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid var(--band-line);border-radius:8px;color:var(--band-ink);font-family:var(--f-display);font-weight:600}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary i{display:block;width:16px;height:2px;background:currentColor;box-shadow:0 5px 0 currentColor,0 -5px 0 currentColor}
+.menu nav{position:absolute;right:0;top:calc(100% + 8px);background:var(--band-2);border:1px solid var(--band-line);border-radius:12px;padding:8px;display:grid;min-width:230px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.menu nav a{color:var(--band-ink);text-decoration:none;padding:12px 14px;border-radius:8px;font-weight:500}
+.menu nav a:hover{background:var(--band)}
+@media (max-width:900px){.menu{display:block}.nav{display:none}}
 
 /* portada */
-.hero{background:radial-gradient(900px 480px at 80% 45%,rgba(63,191,154,.13),transparent 65%),var(--band);color:var(--band-ink);padding-block:clamp(56px,8vw,104px);overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+.hero{background:radial-gradient(900px 500px at 82% 42%,rgba(63,191,154,.12),transparent 65%),var(--band);color:var(--band-ink);padding-block:clamp(56px,7vw,96px) 0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
 .hero-grid>*{min-width:0}
-.hero h1{font-size:clamp(2.8rem,1.4rem + 5.6vw,5.4rem);line-height:.98;font-weight:800;letter-spacing:-.04em}
+.hero .kicker{color:var(--band-green)}
+.hero h1{font-size:clamp(2.2rem,1.3rem + 2.9vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.028em;margin-top:18px}
 .hero h1 em{font-style:normal;color:var(--band-green)}
-.hero p{font-size:clamp(1.15rem,1rem + .5vw,1.35rem);color:var(--band-muted);max-width:34ch;margin-top:26px}
-.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.hero .sub{font-size:clamp(1.08rem,1rem + .3vw,1.22rem);color:var(--band-muted);max-width:44ch;margin-top:22px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 .stage{position:relative;aspect-ratio:620/400;max-width:100%}
 .stage canvas{position:absolute;inset:0;width:100%;height:100%}
-.stage .lbl{position:absolute;font-family:var(--f-display);font-weight:600;font-size:1.02rem;color:var(--band-ink);letter-spacing:.01em}
+.stage .lbl{position:absolute;font-family:var(--f-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--band-ink)}
 .stage .lbl.out{color:var(--band-green)}
-@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.stage{max-width:520px}}
-@media (max-width:620px){.stage .lbl{font-size:.82rem}.stage .lbl.out{left:auto!important;right:0;top:22%!important;text-align:right}}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.stage{max-width:560px}}
+@media (max-width:620px){.stage .lbl{font-size:.66rem}.stage .lbl.out{left:auto!important;right:0;top:22%!important;text-align:right}}
+.kpis{margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--band-line);display:grid;grid-template-columns:repeat(4,1fr)}
+.kpis div{padding:24px 20px 30px;border-left:1px solid var(--band-line);display:grid;gap:4px;align-content:start}
+.kpis div:first-child{border-left:0;padding-left:0}
+.kpis b{font-family:var(--f-display);font-size:clamp(1.6rem,1.1rem + 1.4vw,2.2rem);font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpis span{color:var(--band-muted);font-size:.95rem;line-height:1.4}
+@media (max-width:900px){.kpis{grid-template-columns:1fr 1fr}.kpis div:nth-child(3){border-left:0;padding-left:0}.kpis div:nth-child(n+3){border-top:1px solid var(--band-line)}}
+@media (max-width:440px){.kpis{grid-template-columns:1fr}.kpis div{border-left:0!important;padding-left:0;border-top:1px solid var(--band-line)}.kpis div:first-child{border-top:0}}
 
 /* cifra */
-.big{background:var(--surface);border-bottom:1px solid var(--line)}
 .big .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,6vw,80px);align-items:center}
 .big .wrap>*{min-width:0}
 .big-copy{display:grid;gap:14px}
+.big .num{font-family:var(--f-display);font-weight:800;font-size:clamp(3.2rem,1.6rem + 5.4vw,5.6rem);line-height:.92;letter-spacing:-.045em;color:var(--green-ink);font-variant-numeric:tabular-nums;margin:6px 0}
+.big .num .upto{display:block;font-size:.22em;letter-spacing:0;font-weight:600;color:var(--muted);margin-bottom:8px}
+.big .num small{display:block;font-size:.24em;letter-spacing:0;font-weight:600;color:var(--ink);margin-top:10px}
+.big-copy>p:not(.num):not(.kicker){color:var(--muted);max-width:46ch}
 .meter{margin:0;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px 24px;display:grid;gap:18px}
-.meter figcaption{font-family:var(--f-display);font-weight:700;font-size:1.05rem}
+.meter figcaption{font-family:var(--f-display);font-weight:600;font-size:1.05rem}
 .meter .row{display:grid;grid-template-columns:96px 1fr 68px;gap:14px;align-items:center}
 .meter .tag{font-weight:600;color:var(--muted);font-size:.95rem}
 .meter .bar{display:flex;height:34px;border-radius:8px;overflow:hidden;background:var(--line)}
+.meter .seg{display:block;transform-origin:left;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
 .meter .seg.now{background:var(--steel)}
-.meter .seg.plus{background:var(--green);box-shadow:inset 3px 0 0 var(--surface)}
+.meter .seg.plus{background:var(--green);box-shadow:inset 3px 0 0 var(--bg);transition-delay:.5s}
+.js .meter.pre .seg{transform:scaleX(.001)}
 .meter .val{font-family:var(--f-display);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
 .meter .legend{display:flex;gap:20px;flex-wrap:wrap;font-size:.92rem;color:var(--muted)}
 .meter .k{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:8px;vertical-align:-1px}
 .meter .k.now{background:var(--steel)}.meter .k.plus{background:var(--green)}
-@media (max-width:460px){.meter .row{grid-template-columns:1fr 64px}.meter .tag{grid-column:1/-1}}
-.big .num{margin:4px 0 6px;font-family:var(--f-display);font-weight:800;font-size:clamp(3.4rem,1.6rem + 6vw,6.2rem);line-height:.9;letter-spacing:-.045em;color:var(--green-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
-.big .num .upto{display:block;font-size:.22em;letter-spacing:0;font-weight:700;color:var(--muted);margin-bottom:6px}
-.big .num small{display:block;font-size:.26em;letter-spacing:0;font-weight:700;color:var(--ink);margin-top:10px}
-.big h2{font-size:clamp(1.5rem,1.1rem + 1.4vw,2rem)}
-.big-copy>p:not(.num):not(.kicker){color:var(--muted);max-width:46ch}
 .note{font-size:.86rem;color:var(--muted);line-height:1.5}
-@media (max-width:860px){.big .wrap{grid-template-columns:1fr}}
+@media (max-width:900px){.big .wrap{grid-template-columns:1fr}}
+@media (max-width:460px){.meter .row{grid-template-columns:1fr 64px}.meter .tag{grid-column:1/-1}}
 
-/* pasos */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:s;position:relative}
-.steps::before{content:"";position:absolute;left:28px;right:16%;top:28px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--mist),var(--steel) 50%,var(--green))}
-.steps li{padding:0 32px 0 0;display:grid;gap:12px;align-content:start;counter-increment:s;position:relative}
-.steps .ic{width:56px;height:56px;border-radius:50%;background:var(--surface);border:3px solid var(--steel);color:var(--ink);display:grid;place-items:center;position:relative;z-index:1;margin-bottom:10px}
-.steps li:first-child .ic{border-color:var(--mist)}
-.steps li:last-child .ic{background:var(--green);border-color:var(--green);color:#062018}
-.steps .ic svg{width:28px;height:28px}
-.steps li::before{content:"Paso " counter(s);font-family:var(--f-display);font-weight:600;font-size:.88rem;color:var(--green-ink);order:1}
-.steps .ic{order:0}.steps h3{order:2;font-size:1.45rem}.steps p{order:3}
-.steps p{color:var(--muted)}
-@media (max-width:860px){.steps{grid-template-columns:1fr;gap:36px}.steps::before{left:27px;right:auto;top:28px;bottom:auto;width:3px;height:calc(100% - 150px);background:linear-gradient(180deg,var(--mist),var(--steel) 50%,var(--green))}.steps li{padding:0 0 0 80px;min-height:56px}.steps .ic{position:absolute;left:0;top:0;margin:0}}
-.product{margin-top:28px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:1rem}
-.product b{font-family:var(--f-display);color:var(--ink)}
-.product b span{color:var(--green-ink)}
+/* diagrama */
+.diagram{background:var(--band);border:1px solid var(--band-line);border-radius:18px;padding:clamp(16px,2.5vw,28px);color:var(--band-ink)}
+.dg-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dg-scroll svg{display:block;width:100%;min-width:760px;height:auto}
+.dg-hint{display:none;font-size:.85rem;color:var(--band-muted);margin-top:8px}
+@media (max-width:820px){.dg-hint{display:block}}
+.node{cursor:pointer}
+.node rect{transition:fill .2s,stroke .2s}
+.node:hover rect.box,.node:focus-visible rect.box{stroke:#3fbf9a}
+.node.on rect.box{fill:#1a3d60;stroke:#3fbf9a;stroke-width:2}
+.node:focus{outline:none}
+.node:focus-visible rect.box{stroke-width:3}
+.wire{fill:none;stroke:#244566;stroke-width:2}
+.flow{fill:none;stroke-width:2.5;stroke-dasharray:4 10;animation:dash 1.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-28}}
+.dg-text{font-family:var(--f-display)}
+.dg-panel{margin-top:18px;border-top:1px solid var(--band-line);padding-top:20px;display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:start;min-height:96px}
+.dg-panel .step{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--band-green)}
+.dg-panel h3{font-size:1.35rem;margin-top:6px}
+.dg-panel p{color:var(--band-muted)}
+@media (max-width:640px){.dg-panel{grid-template-columns:1fr;gap:8px}}
+
+/* para quién: pestañas */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:32px}
+.tabs button{font:inherit;font-family:var(--f-display);font-weight:600;font-size:1rem;background:none;border:0;border-bottom:3px solid transparent;color:var(--muted);padding:12px 6px;margin-right:18px;cursor:pointer;min-height:48px}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--green)}
+.tabpanel{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+.tabpanel>*{min-width:0}
+.tabpanel h3{font-size:1.6rem;font-weight:700;margin-bottom:12px}
+.tabpanel p{color:var(--muted)}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.ticks li{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:start}
+.ticks svg{width:22px;height:22px;color:var(--green-ink);margin-top:3px}
+@media (max-width:820px){.tabpanel{grid-template-columns:1fr;gap:24px}}
 
 /* por qué importa */
-.why{background:radial-gradient(700px 360px at 10% 0%,rgba(63,191,154,.10),transparent 70%),var(--band);color:var(--band-ink)}
-.why .kicker{color:var(--band-green)}
-.why .lede{color:var(--band-muted)}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--band-line)}
-.cards div{padding:30px 28px 8px 0;display:grid;gap:12px;align-content:start}
+.cards div{padding:30px 28px 8px 0;display:grid;gap:10px;align-content:start}
 .cards div+div{padding-left:28px;border-left:1px solid var(--band-line)}
-.cards .n{font-family:var(--f-display);font-weight:800;font-size:2.6rem;letter-spacing:-.03em;color:var(--band-green);line-height:1}
+.cards svg{width:34px;height:34px;color:var(--band-green)}
 .cards p{color:var(--band-muted)}
 @media (max-width:860px){.cards{grid-template-columns:1fr}.cards div+div{padding-left:0;border-left:0;border-top:1px solid var(--band-line)}}
+
+/* ruta */
+.road{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.road::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:var(--line)}
+.road .prog{position:absolute;left:0;top:9px;height:2px;width:100%;background:linear-gradient(90deg,var(--mist),var(--green));transform-origin:left;transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.js .road.pre .prog{transform:scaleX(0)}
+.road>div{position:relative;padding:36px 22px 0 0;display:grid;gap:6px;align-content:start}
+.road>div::before{content:"";position:absolute;top:0;left:0;width:20px;height:20px;border-radius:50%;background:var(--bg);border:3px solid var(--steel)}
+.road>div:last-child::before{background:var(--green);border-color:var(--green)}
+.road .when{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.08em;color:var(--steel)}
+.road b{font-family:var(--f-display);font-size:1.7rem;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.road p{color:var(--muted);font-size:.98rem}
+@media (max-width:820px){.road{grid-template-columns:1fr 1fr;row-gap:36px}.road::before,.road .prog{display:none}}
+@media (max-width:460px){.road{grid-template-columns:1fr}}
 
 /* video */
 .vid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
 .vid>*{min-width:0}
-.vid video{width:100%;max-width:100%;aspect-ratio:16/9;border-radius:var(--r);background:#000;display:block;box-shadow:0 30px 60px -30px rgba(11,31,51,.5)}
+.vid video{width:100%;max-width:100%;aspect-ratio:16/9;border-radius:var(--r);background:#000;display:block;border:1px solid var(--band-line)}
 @media (max-width:860px){.vid{grid-template-columns:1fr;gap:28px}}
 
 /* confianza */
-.trust{background:var(--surface);border-block:1px solid var(--line)}
-.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .trust-grid>*{min-width:0}
-.checks{list-style:none;margin:0;padding:0;display:grid;gap:18px}
-.checks li{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start}
-.checks svg{width:28px;height:28px;color:var(--green-ink)}
-.checks b{font-family:var(--f-display);display:block;font-size:1.08rem}
-.checks span{color:var(--muted)}
-.sources{margin-top:8px;display:flex;flex-wrap:wrap;gap:10px}
-.sources span{font-family:var(--f-display);font-weight:600;font-size:.95rem;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg)}
-@media (max-width:860px){.trust-grid{grid-template-columns:1fr}}
+.layers{display:grid;gap:10px}
+.layers div{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.layers svg{width:26px;height:26px;color:var(--green-ink);justify-self:center}
+.layers b{font-family:var(--f-display);font-weight:600;display:block}
+.layers span{color:var(--muted);font-size:.95rem}
+.sources{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.sources span{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.06em;padding:7px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+@media (max-width:860px){.trust-grid{grid-template-columns:1fr;gap:32px}}
+
+/* preguntas */
+.faq{display:grid;gap:0;border-top:1px solid var(--line);max-width:860px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font-family:var(--f-display);font-weight:600;font-size:1.15rem;min-height:48px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:12px;height:12px;border-right:2px solid var(--green-ink);border-bottom:2px solid var(--green-ink);transform:rotate(45deg);transition:transform .2s;flex:none;margin-right:6px}
+.faq details[open] summary::after{transform:rotate(-135deg)}
+.faq details p{color:var(--muted);padding:0 0 22px;max-width:70ch}
 
 /* contacto */
-.contact{background:var(--band);color:var(--band-ink);text-align:left}
-.contact .kicker{color:var(--band-green)}
-.contact .lede{color:var(--band-muted)}
 .c-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .c-grid>*{min-width:0}
 @media (max-width:860px){.c-grid{grid-template-columns:1fr;gap:36px}}
 form{display:grid;gap:16px}
 label{display:grid;gap:6px;font-weight:600;font-size:.95rem;color:var(--band-muted)}
-input,textarea{font:inherit;font-size:1rem;min-height:52px;color:var(--band-ink);background:var(--band-2);border:1px solid #4d6f92;border-radius:10px;padding:12px 14px;width:100%}
+input,textarea{font:inherit;font-size:1rem;min-height:50px;color:var(--band-ink);background:var(--band-2);border:1px solid #4d6f92;border-radius:8px;padding:12px 14px;width:100%}
 textarea{min-height:120px;resize:vertical}
 input:focus,textarea:focus{outline:3px solid var(--band-green);outline-offset:0;border-color:transparent}
 input[aria-invalid="true"]{border-color:#ff8f7f}
 .err{color:#ffb4a8;font-size:.88rem;font-weight:500}
 .err:empty{display:none}
 .form-msg{color:var(--band-green);min-height:1.5em}
-.mail{margin-top:28px;font-family:var(--f-display);font-weight:600;font-size:1.15rem;user-select:all}
+.mail{margin-top:26px;font-family:var(--f-display);font-weight:600;font-size:1.1rem;user-select:all}
 
 footer{background:var(--band);color:var(--band-muted);border-top:1px solid var(--band-line);font-size:.9rem}
 footer .wrap{padding-block:32px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
 footer svg{height:30px;width:auto}
 footer p{max-width:70ch}
 </style>
-</head><body>
 
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#inicio" aria-label="Cauce Inteligencia Tributaria, inicio"><svg viewBox="0 0 1320 340" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M30 70 C130 70 150 170 250 170" stroke="#8fb1cf" stroke-width="22"/><path d="M30 270 C130 270 150 170 250 170" stroke="#5f86ab" stroke-width="22"/><path d="M30 170 L250 170" stroke="#f4f6f8" stroke-width="22"/><path d="M250 170 L320 170" stroke="#3fbf9a" stroke-width="34"/></g><circle cx="320" cy="170" r="30" fill="#3fbf9a"/><text x="390" y="200" font-family="Fira Sans,Helvetica,Arial,sans-serif" font-size="128" font-weight="800" letter-spacing="10" fill="#f4f6f8">CAUCE</text><text x="394" y="262" font-family="Helvetica,Arial,sans-serif" font-size="38" letter-spacing="6" fill="#a9bccd">INTELIGENCIA TRIBUTARIA</text></svg></a>
     <nav class="nav" aria-label="Principal">
-      <a href="#como">Cómo funciona</a>
-      <a href="#importa">Por qué importa</a>
+      <a href="#plataforma">Plataforma</a>
+      <a href="#para-quien">Para quién</a>
+      <a href="#ruta">Implementación</a>
       <a href="#confianza">Confianza</a>
+      <a href="#preguntas">Preguntas</a>
       <a class="btn pri" href="#contacto">Contáctanos</a>
     </nav>
+    <details class="menu" id="menu"><summary aria-label="Abrir menú"><i aria-hidden="true"></i>Menú</summary>
+      <nav aria-label="Principal (móvil)"><a href="#plataforma">Plataforma</a><a href="#para-quien">Para quién</a><a href="#ruta">Implementación</a><a href="#confianza">Confianza</a><a href="#preguntas">Preguntas</a><a href="#contacto">Contáctanos</a></nav>
+    </details>
   </div>
 </header>
 
 <main id="contenido" tabindex="-1">
 <section class="hero" id="inicio">
-  <div class="wrap hero-grid">
-    <div>
-      <h1>Que pague <em>quien contamina.</em></h1>
-      <p>Ayudamos a que el impuesto al carbono se cobre completo, con datos que ya existen y sin cambiar la ley.</p>
-      <div class="cta">
-        <a class="btn pri" href="#como">Conoce cómo funciona
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-        <a class="btn ghost" href="#video">Ver el video</a>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">Inteligencia tributaria · TRAZA CO₂</p>
+        <h1>Cada tonelada de carbono, <em>medida con precisión y cobrada como marca la ley.</em></h1>
+        <p class="sub">Cauce une datos fiscales, aduaneros y ambientales en una sola plataforma para que el impuesto al carbono se cobre completo, sin crear impuestos nuevos.</p>
+        <div class="cta">
+          <a class="btn pri" href="#plataforma">Conoce la plataforma
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn ghost" href="#video">Ver el video</a>
+        </div>
+      </div>
+      <div class="stage" role="img" aria-label="Tres fuentes de información, facturas, aduanas y reportes ambientales, se unen en un solo resultado: lo que realmente se debe">
+        <canvas id="flowcv" aria-hidden="true"></canvas>
+        <div class="lbl" style="left:0;top:8%">Facturas</div>
+        <div class="lbl" style="left:0;top:42%">Aduanas</div>
+        <div class="lbl" style="left:0;bottom:7%">Reportes ambientales</div>
+        <div class="lbl out" style="left:76%;top:42%">Lo que<br>se debe</div>
       </div>
     </div>
-    <div class="stage" role="img" aria-label="Tres fuentes de información, facturas, aduanas y reportes ambientales, se unen en un solo resultado: lo que realmente se debe">
-      <canvas id="flowcv" aria-hidden="true"></canvas>
-      <div class="lbl" style="left:0;top:7%">Facturas</div>
-      <div class="lbl" style="left:0;top:41%">Aduanas</div>
-      <div class="lbl" style="left:0;bottom:6%">Reportes ambientales</div>
-      <div class="lbl out" style="left:76%;top:40%">Lo que<br>se debe</div>
+    <div class="kpis" aria-label="Cifras oficiales">
+      <div><b data-count="10518" data-fmt="int">10,518</b><span>millones de pesos recauda el impuesto al carbono en 2026</span></div>
+      <div><b data-count="973" data-fmt="int">973</b><span>plantas industriales reportan sus emisiones a SEMARNAT</span></div>
+      <div><b data-count="7" data-fmt="int">7</b><span>fuentes oficiales de datos que la plataforma cruza</span></div>
+      <div><b data-count="8" data-fmt="int" data-suffix=" días">8 días</b><span>tarda el ciclo mensual, del dato al caso listo</span></div>
     </div>
   </div>
 </section>
 
-<section class="big" aria-labelledby="bigT">
+<section class="big alt" aria-labelledby="bigT">
   <div class="wrap">
-    <div class="big-copy">
+    <div class="big-copy rv">
       <p class="kicker">Lo que está en juego</p>
-      <p class="num"><span class="upto">Hasta</span>$810<small>millones de pesos más cada año</small></p>
-      <h2 id="bigT">Dinero que hoy no llega a las arcas públicas.</h2>
-      <p>Se recupera solo con cobrar bien lo que ya marca la ley. Son recursos para escuelas, hospitales y transporte.</p>
+      <p class="num"><span class="upto">Hasta</span>$<span data-count="810" data-fmt="int">810</span><small>millones de pesos más cada año</small></p>
+      <h2 id="bigT" style="font-size:clamp(1.5rem,1.1rem + 1.4vw,2rem)">Recursos que hoy no llegan a las arcas públicas.</h2>
+      <p>Se recuperan solo con cobrar bien lo que ya marca la ley. Son recursos para escuelas, hospitales y transporte.</p>
     </div>
-    <figure class="meter" aria-labelledby="meterT">
+    <figure class="meter pre" id="meter" aria-labelledby="meterT">
       <figcaption id="meterT">Impuesto al carbono, millones de pesos al año</figcaption>
       <div class="row"><span class="tag">Hoy</span><div class="bar"><span class="seg now" style="width:92.85%"></span></div><span class="val">10,518</span></div>
       <div class="row"><span class="tag">Con Cauce</span><div class="bar"><span class="seg now" style="width:92.85%"></span><span class="seg plus" style="width:7.15%"></span></div><span class="val">11,328</span></div>
@@ -225,55 +300,125 @@ footer p{max-width:70ch}
   </div>
 </section>
 
-<section id="como">
+<section id="plataforma">
   <div class="wrap">
-    <div class="head">
-      <p class="kicker">Cómo funciona</p>
-      <h2>Tres pasos para que los números cuadren.</h2>
-      <p class="lede">Las empresas declaran cuánto combustible usan. Nosotros lo comparamos con lo que en realidad compraron y quemaron.</p>
+    <div class="head rv">
+      <p class="kicker">La plataforma TRAZA CO₂</p>
+      <h2>Del dato disperso al caso con evidencia.</h2>
+      <p class="lede">Toca cada parte del diagrama para ver qué hace. La información fluye de izquierda a derecha y cada resultado regresa para mejorar el siguiente ciclo.</p>
     </div>
-    <ol class="steps">
-      <li>
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
-        <h3>Reunimos</h3>
-        <p>Juntamos facturas, registros de aduana y reportes ambientales que las autoridades ya tienen.</p>
-      </li>
-      <li>
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 7h14M5 7l-3 7a4 4 0 0 0 6 0L5 7zM19 7l-3 7a4 4 0 0 0 6 0l-3-7z"/></svg></span>
-        <h3>Comparamos</h3>
-        <p>Medimos cuánto combustible se quemó de verdad y lo ponemos frente a lo que se declaró.</p>
-      </li>
-      <li>
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span>
-        <h3>Señalamos</h3>
-        <p>Cuando algo no cuadra, la autoridad recibe el caso con su evidencia. Ella decide qué hacer.</p>
-      </li>
-    </ol>
-    <p class="product">Todo esto lo hace nuestra plataforma <b>TRAZA <span>CO₂</span></b></p>
+    <div class="diagram rv">
+      <div class="dg-scroll">
+        <svg id="dg" viewBox="0 0 1100 470" role="group" aria-label="Diagrama de la plataforma TRAZA CO₂">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3fbf9a"/></marker>
+          </defs>
+          <text x="20" y="34" fill="#b4c4d3" font-family="Fira Mono,monospace" font-size="12" letter-spacing="2">FUENTES OFICIALES</text>
+          <text x="320" y="34" fill="#b4c4d3" font-family="Fira Mono,monospace" font-size="12" letter-spacing="2">TRAZA CO₂ · DENTRO DE LA AUTORIDAD</text>
+          <text x="836" y="34" fill="#b4c4d3" font-family="Fira Mono,monospace" font-size="12" letter-spacing="2">RESULTADO</text>
+          <!-- cables -->
+          <g>
+            <path class="wire" d="M230 82 C270 82 270 235 320 235"/><path class="wire" d="M230 172 C270 172 280 235 320 235"/>
+            <path class="wire" d="M230 262 C270 262 280 235 320 235"/><path class="wire" d="M230 352 C270 352 270 235 320 235"/>
+            <path class="flow" stroke="#8fb1cf" d="M230 82 C270 82 270 235 320 235"/><path class="flow" stroke="#f4f6f8" d="M230 172 C270 172 280 235 320 235"/>
+            <path class="flow" stroke="#8fb1cf" d="M230 262 C270 262 280 235 320 235"/><path class="flow" stroke="#6f97bd" d="M230 352 C270 352 270 235 320 235"/>
+            <path class="flow" stroke="#3fbf9a" d="M790 235 C810 235 810 120 836 120" marker-end="url(#ah)"/>
+            <path class="flow" stroke="#3fbf9a" d="M960 158 L960 222" marker-end="url(#ah)"/>
+            <path class="wire" stroke-dasharray="5 6" d="M960 300 L960 430 L550 430 L550 340" marker-end="url(#ah)"/>
+          </g>
+          <text x="760" y="452" fill="#b4c4d3" font-family="Fira Sans,sans-serif" font-size="13" text-anchor="middle">Cada resultado recalibra el modelo del mes siguiente</text>
+          <!-- fuentes -->
+          <g class="node" tabindex="0" role="button" data-k="cfdi"><rect class="box" x="20" y="54" width="210" height="56" rx="10" fill="#13304d" stroke="#244566"/><text class="dg-text" x="38" y="78" fill="#f4f6f8" font-size="15" font-weight="600">Facturas electrónicas</text><text x="38" y="97" fill="#b4c4d3" font-size="12" font-family="Fira Mono,monospace">SAT</text></g>
+          <g class="node" tabindex="0" role="button" data-k="ped"><rect class="box" x="20" y="144" width="210" height="56" rx="10" fill="#13304d" stroke="#244566"/><text class="dg-text" x="38" y="168" fill="#f4f6f8" font-size="15" font-weight="600">Pedimentos de aduana</text><text x="38" y="187" fill="#b4c4d3" font-size="12" font-family="Fira Mono,monospace">ANAM</text></g>
+          <g class="node" tabindex="0" role="button" data-k="vol"><rect class="box" x="20" y="234" width="210" height="56" rx="10" fill="#13304d" stroke="#244566"/><text class="dg-text" x="38" y="258" fill="#f4f6f8" font-size="15" font-weight="600">Controles volumétricos</text><text x="38" y="277" fill="#b4c4d3" font-size="12" font-family="Fira Mono,monospace">SAT</text></g>
+          <g class="node" tabindex="0" role="button" data-k="amb"><rect class="box" x="20" y="324" width="210" height="56" rx="10" fill="#13304d" stroke="#244566"/><text class="dg-text" x="38" y="348" fill="#f4f6f8" font-size="15" font-weight="600">Reportes ambientales</text><text x="38" y="367" fill="#b4c4d3" font-size="12" font-family="Fira Mono,monospace">SEMARNAT</text></g>
+          <!-- motor -->
+          <rect x="320" y="54" width="470" height="350" rx="16" fill="#0f2742" stroke="#2d5b85" stroke-width="1.5"/>
+          <g fill="none" stroke="#244566" stroke-width="2"><path d="M432 235 H444"/><path d="M549 235 H561"/><path d="M666 235 H678"/></g>
+          <g class="node" tabindex="0" role="button" data-k="val"><rect class="box" x="336" y="170" width="96" height="130" rx="10" fill="#13304d" stroke="#244566"/><text x="350" y="196" fill="#3fbf9a" font-size="12" font-family="Fira Mono,monospace">01</text><text class="dg-text" x="350" y="222" fill="#f4f6f8" font-size="15" font-weight="600">Valida</text><text x="350" y="244" fill="#b4c4d3" font-size="12">estructura</text><text x="350" y="260" fill="#b4c4d3" font-size="12">y totales</text></g>
+          <g class="node" tabindex="0" role="button" data-k="co2"><rect class="box" x="444" y="170" width="105" height="130" rx="10" fill="#13304d" stroke="#244566"/><text x="458" y="196" fill="#3fbf9a" font-size="12" font-family="Fira Mono,monospace">02</text><text class="dg-text" x="458" y="222" fill="#f4f6f8" font-size="15" font-weight="600">Mide CO₂</text><text x="458" y="244" fill="#b4c4d3" font-size="12">volumen a</text><text x="458" y="260" fill="#b4c4d3" font-size="12">toneladas</text></g>
+          <g class="node" tabindex="0" role="button" data-k="calc"><rect class="box" x="561" y="170" width="105" height="130" rx="10" fill="#13304d" stroke="#244566"/><text x="575" y="196" fill="#3fbf9a" font-size="12" font-family="Fira Mono,monospace">03</text><text class="dg-text" x="575" y="222" fill="#f4f6f8" font-size="15" font-weight="600">Calcula</text><text x="575" y="244" fill="#b4c4d3" font-size="12">lo que se</text><text x="575" y="260" fill="#b4c4d3" font-size="12">debió pagar</text></g>
+          <g class="node" tabindex="0" role="button" data-k="cruza"><rect class="box" x="678" y="170" width="96" height="130" rx="10" fill="#13304d" stroke="#244566"/><text x="692" y="196" fill="#3fbf9a" font-size="12" font-family="Fira Mono,monospace">04</text><text class="dg-text" x="692" y="222" fill="#f4f6f8" font-size="15" font-weight="600">Cruza</text><text x="692" y="244" fill="#b4c4d3" font-size="12">y ordena</text><text x="692" y="260" fill="#b4c4d3" font-size="12">por monto</text></g>
+          <text class="dg-text" x="340" y="96" fill="#f4f6f8" font-size="20" font-weight="700">TRAZA <tspan fill="#3fbf9a">CO₂</tspan></text>
+          <text x="340" y="120" fill="#b4c4d3" font-size="13">Cuatro motores en secuencia, cada mes</text>
+          <text x="340" y="380" fill="#b4c4d3" font-size="12" font-family="Fira Mono,monospace">ciclo de 8 días · registro de cada operación</text>
+          <!-- salida -->
+          <g class="node" tabindex="0" role="button" data-k="exp"><rect class="box" x="836" y="88" width="248" height="70" rx="10" fill="#13304d" stroke="#244566"/><text class="dg-text" x="854" y="117" fill="#f4f6f8" font-size="15" font-weight="600">Expediente con evidencia</text><text x="854" y="139" fill="#b4c4d3" font-size="12">litros · toneladas · pesos</text></g>
+          <g class="node" tabindex="0" role="button" data-k="aut"><rect class="box" x="836" y="226" width="248" height="74" rx="10" fill="#1f9e7a" stroke="#3fbf9a"/><text class="dg-text" x="854" y="257" fill="#062018" font-size="15" font-weight="700">La autoridad decide</text><text x="854" y="279" fill="#062018" font-size="12">carta invitación o revisión</text></g>
+        </svg>
+      </div>
+      <p class="dg-hint">Desliza el diagrama hacia los lados para verlo completo.</p>
+      <div class="dg-panel" aria-live="polite">
+        <div><p class="step" id="dgStep">Paso 02 · Motor</p><h3 id="dgTitle">Mide el CO₂</h3></div>
+        <p id="dgText">Convierte cada litro o tonelada de combustible en energía y luego en toneladas de CO₂, con los poderes caloríficos oficiales de CONUEE y los factores del IPCC. Es el mismo método que usa el registro de emisiones de SEMARNAT.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="why" id="importa">
+<section class="alt" id="para-quien">
   <div class="wrap">
-    <div class="head">
+    <div class="head rv">
+      <p class="kicker">Para quién</p>
+      <h2>Una plataforma, tres tipos de autoridad.</h2>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Tipos de autoridad">
+      <button role="tab" id="t1" aria-controls="p1" aria-selected="true">Administración tributaria federal</button>
+      <button role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">Gobiernos estatales</button>
+      <button role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">Autoridad ambiental</button>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="p1" aria-labelledby="t1">
+      <div><h3>Cobrar completo el impuesto al carbono.</h3><p>Detecta combustible declarado como materia prima que en realidad se quema, autoconsumo que no pagó y carbón o coque no declarados. Todo con las facultades y la ley que ya existen.</p></div>
+      <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Casos ordenados por lo que realmente se puede cobrar</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Evidencia lista para una carta invitación o una revisión</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Se conecta a los sistemas de análisis que ya operan</span></li></ul>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+      <div><h3>Verificar los impuestos ecológicos locales.</h3><p>Varios estados ya cobran por tonelada emitida. La plataforma les da una medición independiente por planta, con los datos del registro nacional de emisiones.</p></div>
+      <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Medición por planta y por mes</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Compara lo declarado al estado contra lo reportado a la federación</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Se opera por convenio de colaboración</span></li></ul>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+      <div><h3>Datos de emisiones más confiables.</h3><p>Los reportes de emisiones son autodeclarados. Cruzarlos con lo que cada planta compró y quemó ayuda a detectar errores y a preparar el camino para un mercado de carbono.</p></div>
+      <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Verificación cruzada de reportes de emisiones</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Mismo método de cálculo que el registro oficial</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Base de medición para futuros instrumentos de carbono</span></li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="importa">
+  <div class="wrap">
+    <div class="head rv">
       <p class="kicker">Por qué importa</p>
-      <h2>Un impuesto justo, un aire más limpio.</h2>
-      <p class="lede">Cuando contaminar cuesta lo que debe, todos ganamos.</p>
+      <h2>Un impuesto bien cobrado beneficia a todos.</h2>
     </div>
-    <div class="cards">
-      <div><span class="n">Justicia</span><h3>Paga quien debe pagar</h3><p>Las empresas que cumplen no compiten en desventaja contra las que no declaran todo.</p></div>
-      <div><span class="n">Aire</span><h3>Menos emisiones</h3><p>Un precio real al carbono impulsa combustibles y procesos más limpios.</p></div>
-      <div><span class="n">Recursos</span><h3>Más para todos</h3><p>Lo recuperado regresa al presupuesto público, sin crear impuestos nuevos.</p></div>
+    <div class="cards rv">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 7h14M5 7l-3 7a4 4 0 0 0 6 0L5 7zM19 7l-3 7a4 4 0 0 0 6 0l-3-7z"/></svg><h3>Competencia justa</h3><p>Las empresas que cumplen dejan de competir en desventaja contra las que no declaran todo.</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12c3-6 6 6 9 0s6 6 9 0"/><path d="M3 18c3-6 6 6 9 0s6 6 9 0"/></svg><h3>Menos emisiones</h3><p>Cuando el carbono cuesta lo que marca la ley, conviene usar combustibles y procesos más limpios.</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg><h3>Más recursos públicos</h3><p>Lo recuperado regresa al presupuesto sin crear impuestos nuevos ni subir tasas.</p></div>
     </div>
   </div>
 </section>
 
-<section id="video">
+<section id="ruta">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker">Implementación</p>
+      <h2>De un piloto a todo el país en tres años.</h2>
+      <p class="lede">Cada etapa se mide antes de pasar a la siguiente.</p>
+    </div>
+    <div class="road pre" id="road">
+      <span class="prog" aria-hidden="true"></span>
+      <div><span class="when">2027</span><b>Piloto</b><p>80 contribuyentes de seis industrias.</p></div>
+      <div><span class="when">Diciembre 2027</span><b>Evaluación</b><p>Decisión de escalar con resultados medidos.</p></div>
+      <div><span class="when">2028</span><b>3,000</b><p>contribuyentes, grandes consumidores industriales.</p></div>
+      <div><span class="when">2029</span><b>15,000</b><p>contribuyentes, cobertura nacional.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="video">
   <div class="wrap vid">
     <div class="head" style="margin-bottom:0">
       <p class="kicker">En cuatro minutos</p>
       <h2>Mira cómo funciona.</h2>
-      <p class="lede">El problema, la solución y lo que cambia para el país, explicado paso a paso.</p>
+      <p class="lede">El problema, la solución y lo que cambia para el país, paso a paso.</p>
     </div>
     <video controls preload="metadata" poster="assets/poster.jpg" playsinline aria-label="Video de Cauce y TRAZA CO₂, 4 minutos 37 segundos">
       <source src="assets/video_corporativo.mp4" type="video/mp4">
@@ -282,42 +427,56 @@ footer p{max-width:70ch}
   </div>
 </section>
 
-<section class="trust" id="confianza">
+<section id="confianza">
   <div class="wrap trust-grid">
-    <div class="head" style="margin-bottom:0">
+    <div class="head rv" style="margin-bottom:0">
       <p class="kicker">Confianza</p>
-      <h2>La información de los contribuyentes no sale del SAT.</h2>
-      <p class="lede">Nuestro sistema se instala dentro de la autoridad. Nosotros ponemos la tecnología; la información la maneja solo personal autorizado.</p>
-    </div>
-    <div style="display:grid;gap:28px">
-      <ul class="checks">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><div><b>Secreto fiscal</b><span>Diseñado para cumplir el artículo 69 del Código Fiscal.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><div><b>Decide una persona</b><span>El sistema señala; la autoridad revisa y resuelve.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><div><b>Todo queda registrado</b><span>Cada consulta y cada cálculo se puede rastrear.</span></div></li>
-      </ul>
+      <h2>La información de los contribuyentes nunca sale de la autoridad.</h2>
+      <p class="lede">La plataforma se instala dentro de la infraestructura de la autoridad. Cauce aporta la tecnología y el soporte; la información la opera solo personal autorizado.</p>
       <div>
-        <p style="font-weight:600;margin-bottom:10px">Trabajamos con fuentes y normas oficiales</p>
         <div class="sources"><span>SAT</span><span>ANAM</span><span>SEMARNAT</span><span>CONUEE</span><span>IPCC</span></div>
-        <p class="note">Mencionarlas no implica convenio ni respaldo de estas instituciones.</p>
+        <p class="note" style="margin-top:10px">Fuentes de datos y normas que usa la plataforma. Su mención no implica convenio ni respaldo.</p>
       </div>
+    </div>
+    <div class="layers rv">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg><p><b>Instalada en casa de la autoridad</b><span>Sin nube externa ni copias fuera de su centro de datos.</span></p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><p><b>Secreto fiscal</b><span>Diseñada para cumplir el artículo 69 del Código Fiscal.</span></p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><p><b>Decide una persona</b><span>La plataforma señala; la autoridad revisa y resuelve.</span></p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><p><b>Todo queda registrado</b><span>Cada consulta y cada cálculo se puede rastrear.</span></p></div>
     </div>
   </div>
 </section>
 
-<section class="contact" id="contacto">
+<section class="alt" id="preguntas">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kicker">Preguntas frecuentes</p>
+      <h2>Lo que más nos preguntan.</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Es un impuesto nuevo?</summary><p>No. El impuesto al carbono existe en México desde 2014. Cauce ayuda a cobrar completo el que ya marca la ley, con las cuotas oficiales vigentes.</p></details>
+      <details><summary>¿La plataforma multa a las empresas?</summary><p>No. La plataforma señala diferencias y entrega la evidencia. La autoridad decide si envía una carta invitación o abre una revisión, y la empresa siempre puede aclarar.</p></details>
+      <details><summary>¿Cauce ve los datos de los contribuyentes?</summary><p>No. La plataforma se instala dentro de la autoridad y solo la opera su personal autorizado. Cauce da la tecnología y el soporte técnico.</p></details>
+      <details><summary>¿De dónde salen los $810 millones?</summary><p>Es el escenario alto de nuestra proyección: lo que se recuperaría cada año si se cobra completo lo que ya marca la ley, calculado con las cuotas oficiales de 2026. El escenario base es de 457 millones. La cifra se confirma en el piloto.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="contacto">
   <div class="wrap c-grid">
     <div>
       <p class="kicker">Contacto</p>
-      <h2 style="margin-top:14px">Hablemos.</h2>
-      <p class="lede" style="margin-top:16px">¿Trabajas en una administración tributaria, eres periodista o quieres saber más? Escríbenos.</p>
+      <h2 style="margin-top:14px">Hablemos de tu proyecto.</h2>
+      <p class="lede" style="margin-top:16px">Si trabajas en una administración tributaria o ambiental, te mostramos la plataforma con datos de ejemplo en 30 minutos.</p>
       <p class="mail">[correo de contacto]</p>
     </div>
     <form id="cform" novalidate>
       <label for="f-nombre"><span>Nombre</span><input id="f-nombre" name="nombre" autocomplete="name" required aria-describedby="e-nombre"><span class="err" id="e-nombre"></span></label>
+      <label for="f-org"><span>Institución</span><input id="f-org" name="institucion" autocomplete="organization"></label>
       <label for="f-correo"><span>Correo</span><input id="f-correo" name="correo" type="email" autocomplete="email" required aria-describedby="e-correo"><span class="err" id="e-correo"></span></label>
       <label for="f-msg"><span>Mensaje</span><textarea id="f-msg" name="mensaje"></textarea></label>
       <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-        <button class="btn pri" type="submit">Enviar mensaje</button>
+        <button class="btn pri" type="submit">Solicitar demostración</button>
         <p class="form-msg" id="form-msg" role="status"></p>
       </div>
     </form>
@@ -333,12 +492,51 @@ footer p{max-width:70ch}
 </footer>
 
 <script>
+document.documentElement.classList.add('js');
 (function(){
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* formulario */
   var f=document.getElementById('cform'),m=document.getElementById('form-msg');
-  var msgs={'f-nombre':'Escribe tu nombre.','f-correo':'Escribe un correo válido, por ejemplo nombre@correo.com.'};
+  var msgs={'f-nombre':'Escribe tu nombre.','f-correo':'Escribe un correo válido, por ejemplo nombre@institucion.gob.mx.'};
   function check(i){var v=i.value.trim(),ok=v&&(i.type!=='email'||/^\S+@\S+\.\S+$/.test(v));var e=document.getElementById(i.getAttribute('aria-describedby'));i.setAttribute('aria-invalid',ok?'false':'true');e.textContent=ok?'':msgs[i.id];return ok;}
   [].forEach.call(f.querySelectorAll('[required]'),function(i){i.addEventListener('blur',function(){if(i.value)check(i)})});
   f.addEventListener('submit',function(e){e.preventDefault();var bad=[].filter.call(f.querySelectorAll('[required]'),function(i){return !check(i)});if(bad.length){m.textContent='Revisa los campos marcados.';bad[0].focus();return;}m.textContent='Borrador: este formulario todavía no envía mensajes. Escríbenos al correo de contacto.';});
+  /* menú móvil */
+  var menu=document.getElementById('menu');
+  [].forEach.call(menu.querySelectorAll('a'),function(a){a.addEventListener('click',function(){menu.open=false})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary').focus()}});
+  /* pestañas */
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  function sel(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on});t.focus();}
+  tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(t)});t.addEventListener('keydown',function(e){if(e.key==='ArrowRight')sel(tabs[(i+1)%tabs.length]);if(e.key==='ArrowLeft')sel(tabs[(i+tabs.length-1)%tabs.length])})});
+  /* diagrama */
+  var D={
+    cfdi:['Fuente · SAT','Facturas electrónicas','Cada compra y venta de combustible queda en una factura. Dicen cuánto entró y cuánto salió de cada empresa.'],
+    ped:['Fuente · ANAM','Pedimentos de aduana','Registran el volumen exacto de cada importación de combustible al país.'],
+    vol:['Fuente · SAT','Controles volumétricos','Medidores en cada instalación que registran recepción, entrega e inventario.'],
+    amb:['Fuente · SEMARNAT','Reportes ambientales','Cada planta reporta cuánto combustible quemó y cuánto CO₂ emitió. Es un dato independiente de su declaración fiscal.'],
+    val:['Paso 01 · Motor','Valida los datos','Revisa que cada archivo esté completo y que sus totales cuadren antes de usarlo. Une cada registro con su empresa y su planta.'],
+    co2:['Paso 02 · Motor','Mide el CO₂','Convierte cada litro o tonelada de combustible en energía y luego en toneladas de CO₂, con los poderes caloríficos oficiales de CONUEE y los factores del IPCC. Es el mismo método que usa el registro de emisiones de SEMARNAT.'],
+    calc:['Paso 03 · Motor','Calcula lo que se debió pagar','Aplica las cuotas oficiales del impuesto al carbono a cada combustible y lo compara con lo que la empresa declaró.'],
+    cruza:['Paso 04 · Motor','Cruza y ordena','Compara lo que entró, lo que salió y lo que se quemó. Si no cuadra, abre un caso y lo ordena por el monto que realmente se puede cobrar.'],
+    exp:['Resultado','Expediente con evidencia','Cada caso trae la diferencia en litros, toneladas y pesos, y el archivo de origen de cada cifra.'],
+    aut:['Resultado','La autoridad decide','Un auditor revisa el expediente y decide si envía una carta invitación o abre una revisión. Lo que resulta regresa al sistema para mejorar el siguiente mes.']
+  };
+  var nodes=[].slice.call(document.querySelectorAll('#dg .node'));
+  var st=document.getElementById('dgStep'),ti=document.getElementById('dgTitle'),tx=document.getElementById('dgText');
+  function pick(n){nodes.forEach(function(x){x.classList.toggle('on',x===n);x.setAttribute('aria-pressed',x===n)});var d=D[n.dataset.k];st.textContent=d[0];ti.textContent=d[1];tx.textContent=d[2];}
+  nodes.forEach(function(n){var d=D[n.dataset.k];n.setAttribute('aria-label',d[1]);n.addEventListener('click',function(){pick(n)});n.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(n)}})});
+  pick(document.querySelector('#dg .node[data-k=co2]'));
+  /* contadores y apariciones */
+  function fmt(v,el){return Math.round(v).toLocaleString('en-US')+(el.dataset.suffix||'')}
+  function count(el){if(still||el.dataset.done)return;el.dataset.done=1;var to=+el.dataset.count,t0=null;function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1200),e=1-Math.pow(1-p,3);el.textContent=fmt(to*e,el);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(to,el)}requestAnimationFrame(step)}
+  if('IntersectionObserver' in window&&!still){
+    var rv=[].slice.call(document.querySelectorAll('.rv'));
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;el.classList.remove('pre');[].forEach.call(el.querySelectorAll('[data-count]'),count);if(el.matches('[data-count]'))count(el);io.unobserve(el)}})},{threshold:.15});
+    rv.forEach(function(el){if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre')}io.observe(el)});
+    ['meter','road'].forEach(function(id){var el=document.getElementById(id);if(el.getBoundingClientRect().top<innerHeight)el.classList.remove('pre');io.observe(el)});
+    [].forEach.call(document.querySelectorAll('.kpis [data-count]'),function(el){io.observe(el)});
+  } else {document.getElementById('meter').classList.remove('pre');document.getElementById('road').classList.remove('pre');}
 })();
 (function(){
   var cv=document.getElementById('flowcv'); if(!cv) return;
@@ -369,4 +567,6 @@ footer p{max-width:70ch}
   document.addEventListener('visibilitychange',function(){if(!document.hidden&&!still)requestAnimationFrame(frame)});
 })();
 </script>
-</body></html>
+
+</body>
+</html>
